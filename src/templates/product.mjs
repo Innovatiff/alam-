@@ -3,7 +3,7 @@ import { heroArt, flowArt } from '../data/mockups.mjs';
 const icon = (name) => `<svg><use href="#i-${name}"/></svg>`;
 
 export function renderProductPage(p, ctx) {
-  const { root, products, site } = ctx;
+  const { root, products } = ctx;
   const others = products.filter((o) => o.slug !== p.slug);
 
   const kpis = p.kpis.map((k) => `<div class="kpi">${icon(k.icon)}<span>${k.text}</span></div>`).join('');
@@ -47,7 +47,7 @@ export function renderProductPage(p, ctx) {
   const examples = p.examples
     ? `<section class="section tight">
         <div class="container">
-          <div class="section-head"><span class="eyebrow"><span class="dot"></span>What we build</span><h2>A few things we build to order</h2></div>
+          <div class="section-head"><span class="eyebrow"><span class="dot"></span>Lo que construimos</span><h2>Algunas cosas que hacemos a la medida</h2></div>
           <div class="examples" data-stagger="70">
             ${p.examples.map((e) => `<div class="chip" data-reveal="scale">${icon('check')}${e}</div>`).join('')}
           </div>
@@ -72,14 +72,14 @@ export function renderProductPage(p, ctx) {
   <div class="container">
     <div class="split">
       <div>
-        <nav class="breadcrumb" aria-label="Breadcrumb" data-reveal="up">
-          <a href="${root}index.html">Home</a>${icon('chevron-right')}<a href="${root}products.html">Products</a>${icon('chevron-right')}<span>${p.name}</span>
+        <nav class="breadcrumb" aria-label="Ruta" data-reveal="up">
+          <a href="${root}index.html">Inicio</a>${icon('chevron-right')}<a href="${root}products.html">Productos</a>${icon('chevron-right')}<span>${p.name}</span>
         </nav>
         <h1 class="h-display" data-words>${p.headline}</h1>
         <p class="lead" data-reveal="blur" style="--d:300ms">${p.lead}</p>
         <div class="row" data-reveal="up" style="--d:450ms">
-          <a class="btn btn-primary btn-lg" href="${root}${p.demo.href}">${icon('play')}Try the live sample</a>
-          <a class="btn btn-ghost btn-lg" href="${root}contact.html?interest=${p.slug}">Get a quote ${icon('arrow-right')}<span class="sr-only"></span></a>
+          <a class="btn btn-primary btn-lg" href="${root}${p.demo.href}">${icon('play')}Probar la muestra en vivo</a>
+          <a class="btn btn-ghost btn-lg" href="${root}contact.html?interest=${p.slug}">Pedir cotización ${icon('arrow-right')}</a>
         </div>
         <div class="kpis" data-reveal="up" style="--d:600ms">${kpis}</div>
       </div>
@@ -94,9 +94,9 @@ export function renderProductPage(p, ctx) {
 <section class="section">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow"><span class="dot"></span>Features</span>
-      <h2 data-words>Everything you need, nothing you have to figure out alone</h2>
-      <p class="lead">Each feature is set up by us on installation day and explained to your team in plain language.</p>
+      <span class="eyebrow"><span class="dot"></span>Funciones</span>
+      <h2 data-words>Todo lo que necesitas, sin que tengas que descifrarlo solo</h2>
+      <p class="lead">Cada función la configuramos nosotros el día de la instalación y se la explicamos a tu equipo con palabras sencillas.</p>
     </div>
     <div class="feature-grid" data-stagger="90">${features}</div>
   </div>
@@ -106,8 +106,8 @@ export function renderProductPage(p, ctx) {
   <div class="rings"><i></i><i></i><i></i></div>
   <div class="container z1">
     <div class="section-head">
-      <span class="eyebrow"><span class="dot"></span>How it works</span>
-      <h2 data-words>From the first tap to the report, step by step</h2>
+      <span class="eyebrow"><span class="dot"></span>Cómo funciona</span>
+      <h2 data-words>Del primer toque al reporte, paso a paso</h2>
     </div>
     <div class="flow">${how}</div>
   </div>
@@ -119,7 +119,7 @@ ${examples}
   <div class="container">
     <div class="card gradient-border static onsite-panel" data-reveal="up">
       <div>
-        <span class="eyebrow left"><span class="dot"></span>Installed on site</span>
+        <span class="eyebrow left"><span class="dot"></span>Instalado en tu local</span>
         <h2 style="margin:1rem 0 .9rem">${p.onsite.title}</h2>
         <p class="lead" style="margin-bottom:1.4rem">${p.onsite.desc}</p>
         <ul class="checks">${onsiteItems}</ul>
@@ -136,20 +136,20 @@ ${examples}
   <div class="container">
     <div class="card solid static demo-panel" data-reveal="up">
       <div>
-        <span class="tag green"><span class="dot" style="width:7px;height:7px;border-radius:50%;background:currentColor"></span> Live sample</span>
+        <span class="tag green"><span class="dot" style="width:7px;height:7px;border-radius:50%;background:currentColor"></span> Muestra en vivo</span>
         <h2 style="margin:1rem 0 .9rem">${p.demo.title}</h2>
         <p class="lead" style="margin-bottom:1.2rem">${p.demo.desc}</p>
         <ul class="checks" style="margin-bottom:1.6rem">${p.demo.bullets.map((b) => `<li>${icon('check')}<span>${b}</span></li>`).join('')}</ul>
         <div class="row">
-          <a class="btn btn-primary btn-lg" href="${root}${p.demo.href}">${icon('play')}Open the sample</a>
-          <a class="btn-link" href="${root}samples.html">All samples ${icon('arrow-right')}</a>
+          <a class="btn btn-primary btn-lg" href="${root}${p.demo.href}">${icon('play')}Abrir la muestra</a>
+          <a class="btn-link" href="${root}samples.html">Todas las muestras ${icon('arrow-right')}</a>
         </div>
       </div>
-      <a class="demo-preview" href="${root}${p.demo.href}" aria-label="Open the ${p.name} sample">
+      <a class="demo-preview" href="${root}${p.demo.href}" aria-label="Abrir la muestra: ${p.name}">
         <div class="demo-frame">
-          <div class="device-bar"><i></i><i></i><i></i><span class="url">${site.name.toLowerCase()}-samples / ${p.demo.href.replace('demos/', '').replace('.html', '')}</span></div>
+          <div class="device-bar"><i></i><i></i><i></i><span class="url">muestras / ${p.demo.href.replace('demos/', '').replace('.html', '')}</span></div>
           <div class="demo-shot">${heroArt(p.slug, true)}</div>
-          <div class="demo-hover">${icon('play')}<span>Open interactive sample</span></div>
+          <div class="demo-hover">${icon('play')}<span>Abrir la muestra interactiva</span></div>
         </div>
       </a>
     </div>
@@ -159,8 +159,8 @@ ${examples}
 <section class="section">
   <div class="container narrow">
     <div class="section-head">
-      <span class="eyebrow"><span class="dot"></span>Questions</span>
-      <h2>Common questions about ${p.name.toLowerCase()}</h2>
+      <span class="eyebrow"><span class="dot"></span>Preguntas</span>
+      <h2>Preguntas frecuentes sobre ${p.name.toLowerCase()}</h2>
     </div>
     <div data-reveal="up">${faq}</div>
   </div>
@@ -169,12 +169,12 @@ ${examples}
 <section class="section tight">
   <div class="container">
     <div class="cta-band" data-reveal="scale">
-      <span class="eyebrow"><span class="dot"></span>Next step</span>
-      <h2 style="margin-top:1rem">Want ${p.name.toLowerCase()} in your business?</h2>
-      <p class="lead">Tell us about your business. We visit, we listen, and you receive a clear quote with everything included: software, hardware, installation and training.</p>
+      <span class="eyebrow"><span class="dot"></span>Siguiente paso</span>
+      <h2 style="margin-top:1rem">¿Quieres ${p.name.toLowerCase()} en tu negocio?</h2>
+      <p class="lead">Cuéntanos de tu negocio. Te visitamos, te escuchamos y recibes una cotización clara con todo incluido: software, equipo, instalación y capacitación.</p>
       <div class="row" style="justify-content:center">
-        <a class="btn btn-white btn-lg" href="${root}contact.html?interest=${p.slug}">Get a quote ${icon('arrow-right')}</a>
-        <a class="btn btn-ghost btn-lg" href="${root}how-it-works.html">See how installation works</a>
+        <a class="btn btn-white btn-lg" href="${root}contact.html?interest=${p.slug}">Pedir cotización ${icon('arrow-right')}</a>
+        <a class="btn btn-ghost btn-lg" href="${root}how-it-works.html">Cómo es la instalación</a>
       </div>
     </div>
   </div>
@@ -182,7 +182,7 @@ ${examples}
 
 <section class="section tight">
   <div class="container">
-    <div class="section-head left" style="margin-bottom:1.5rem"><h3>Other products that connect to it</h3></div>
+    <div class="section-head left" style="margin-bottom:1.5rem"><h3>Otros productos que se conectan con este</h3></div>
     <div class="related" data-stagger="70">${related}</div>
   </div>
 </section>

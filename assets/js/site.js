@@ -20,7 +20,7 @@
     toggle.addEventListener('click', () => {
       const open = document.body.classList.toggle('menu-open');
       toggle.setAttribute('aria-expanded', String(open));
-      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
     });
   }
   $$('.has-menu > .nav-link').forEach((btn) => {
@@ -397,18 +397,18 @@
           const res = await fetch(endpoint, { method: 'POST', headers: { Accept: 'application/json' }, body: data });
           if (!res.ok) throw new Error('bad status');
           form.reset();
-          setStatus('Thank you. We received your message and will reply within one business day.', true);
+          setStatus('Gracias. Recibimos tu mensaje y te respondemos en un día hábil.', true);
         } catch (err) {
-          setStatus('Something went wrong sending the form. Please email or call us directly.', false);
+          setStatus('Algo falló al enviar el formulario. Escríbenos o llámanos directamente.', false);
         }
         btn.disabled = false;
       } else {
         const lines = [];
         data.forEach((v, k) => { if (v) lines.push(`${k}: ${v}`); });
-        const subject = encodeURIComponent(`Quote request from ${data.get('name') || 'website visitor'}`);
+        const subject = encodeURIComponent(`Solicitud de cotización de ${data.get('nombre') || 'un visitante del sitio'}`);
         const body = encodeURIComponent(lines.join('\n'));
         window.location.href = `mailto:${form.dataset.email}?subject=${subject}&body=${body}`;
-        setStatus('Your email app should now open with the message ready to send.', true);
+        setStatus('Se abrirá tu aplicación de correo con el mensaje listo para enviar.', true);
       }
     });
     const params = new URLSearchParams(location.search);

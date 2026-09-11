@@ -1,10 +1,10 @@
 <!--
-title: Sample · Inventory
-description: Interactive sample of the inventory software: live stock levels, low-stock alerts, barcode receiving and purchase orders.
+title: Muestra · Inventario
+description: Muestra interactiva del software de inventario: existencias en vivo, alertas de stock bajo, recepción con lector de códigos y órdenes de compra.
 bodyClass: demo
 extraCss: assets/css/demo.css
 extraJs: assets/js/demos/inventory.js
-demoName: Sunrise Café · Inventory
+demoName: Café Amanecer · Inventario
 productSlug: inventory-software
 -->
 {{> head}}
@@ -12,44 +12,44 @@ productSlug: inventory-software
 <main class="demo-main" id="main">
   <div class="shell">
     <aside class="shell-side">
-      <div class="shell-brand"><i></i><div>Sunrise Café<small>Stock room</small></div></div>
-      <nav class="shell-nav">
-        <button type="button" data-nav="stock"><svg><use href="#i-boxes"/></svg>Stock <span class="count" id="low-count"></span></button>
-        <button type="button" data-nav="receive"><svg><use href="#i-scan"/></svg>Receive</button>
-        <button type="button" data-nav="orders"><svg><use href="#i-file"/></svg>Purchase orders <span class="count" id="po-count"></span></button>
-        <button type="button" data-nav="suppliers"><svg><use href="#i-truck"/></svg>Suppliers</button>
-        <button type="button" data-nav="reports"><svg><use href="#i-bar-chart"/></svg>Reports</button>
+      <div class="shell-brand"><i></i><div>Café Amanecer<small>Bodega</small></div></div>
+      <nav class="shell-nav" id="shell-nav">
+        <button type="button" data-nav="stock"><svg><use href="#i-boxes"/></svg>Existencias <span class="count" id="low-count"></span></button>
+        <button type="button" data-nav="receive"><svg><use href="#i-scan"/></svg>Recibir</button>
+        <button type="button" data-nav="orders"><svg><use href="#i-file"/></svg>Órdenes de compra <span class="count" id="po-count"></span></button>
+        <button type="button" data-nav="suppliers"><svg><use href="#i-truck"/></svg>Proveedores</button>
+        <button type="button" data-nav="reports"><svg><use href="#i-bar-chart"/></svg>Reportes</button>
       </nav>
-      <div class="shell-foot"><svg><use href="#i-link"/></svg><div>Connected to POS<small>Every sale updates stock instantly</small></div></div>
+      <div class="shell-foot"><svg><use href="#i-link"/></svg><div>Conectado al POS<small>Cada venta actualiza las existencias al instante</small></div></div>
     </aside>
     <div class="shell-main">
       <section data-view="stock">
-        <div class="shell-top"><div><h1>Stock levels</h1><span class="sub">Live, updated by every sale and delivery</span></div><div class="right"><div class="search"><svg><use href="#i-search"/></svg><input id="inv-search" placeholder="Search products…"></div><div class="seg" id="inv-filter"><button type="button" data-f="all" class="on">All</button><button type="button" data-f="low">Low stock</button></div><button class="btn btn-ghost btn-sm" type="button" id="simulate-sales"><svg><use href="#i-pos"/></svg>Simulate a busy hour</button></div></div>
+        <div class="shell-top"><div><h1>Existencias</h1><span class="sub">En vivo, actualizadas con cada venta y cada entrega</span></div><div class="right"><div class="search"><svg><use href="#i-search"/></svg><input id="inv-search" placeholder="Buscar productos…"></div><div class="seg" id="inv-filter"><button type="button" data-f="all" class="on">Todo</button><button type="button" data-f="low">Stock bajo</button></div><button class="btn btn-ghost btn-sm" type="button" id="simulate-sales"><svg><use href="#i-pos"/></svg>Simular una hora pico</button></div></div>
         <div id="low-panel"></div>
-        <div class="panel table-wrap"><table class="table" id="stock-table"></table></div>
+        <div class="panel table-wrap" id="stock-panel"><table class="table" id="stock-table"></table></div>
       </section>
       <section data-view="receive">
-        <div class="shell-top"><div><h1>Receive stock</h1><span class="sub">Scan each item as the delivery comes in</span></div></div>
+        <div class="shell-top"><div><h1>Recibir mercancía</h1><span class="sub">Escanea cada producto conforme llega la entrega</span></div></div>
         <div class="two">
-          <div class="panel scan-panel"><h3><svg><use href="#i-scan"/></svg>Barcode scanner</h3><div class="scanbox big" id="scan-visual"><div class="barcode">${'<i style="--w:1"></i><i style="--w:2"></i><i style="--w:1"></i><i style="--w:3"></i>'.repeat(4)}</div><div class="beam"></div></div><button class="btn btn-primary btn-lg" type="button" id="scan-btn" style="width:100%"><svg><use href="#i-scan"/></svg>Scan next item</button><p class="muted small" style="margin-top:.6rem">In your shop this happens with the handheld scanner we install. Each scan adds one case to stock.</p></div>
+          <div class="panel scan-panel" id="scan-panel"><h3><svg><use href="#i-scan"/></svg>Lector de códigos de barras</h3><div class="scanbox big" id="scan-visual"><div class="barcode">${'<i style="--w:1"></i><i style="--w:2"></i><i style="--w:1"></i><i style="--w:3"></i>'.repeat(4)}</div><div class="beam"></div></div><button class="btn btn-primary btn-lg" type="button" id="scan-btn" style="width:100%"><svg><use href="#i-scan"/></svg>Escanear el siguiente producto</button><p class="muted small" style="margin-top:.6rem">En tu negocio esto se hace con el lector de mano que instalamos. Cada escaneo suma una caja a las existencias.</p></div>
           <div class="stack">
-            <div class="panel"><h3><svg><use href="#i-plus"/></svg>Receive manually</h3><div class="form-grid"><div class="field full"><label>Product</label><select class="input" id="rcv-product"></select></div><div class="field"><label>Quantity</label><input class="input" id="rcv-qty" type="number" min="1" value="12"></div><div class="field"><label>&nbsp;</label><button class="btn btn-success" type="button" id="rcv-btn" style="width:100%"><svg><use href="#i-check"/></svg>Add to stock</button></div></div></div>
-            <div class="panel"><h3><svg><use href="#i-file"/></svg>Received today</h3><div class="list" id="rcv-log"></div></div>
+            <div class="panel"><h3><svg><use href="#i-plus"/></svg>Recibir a mano</h3><div class="form-grid"><div class="field full"><label>Producto</label><select class="input" id="rcv-product"></select></div><div class="field"><label>Cantidad</label><input class="input" id="rcv-qty" type="number" min="1" value="12"></div><div class="field"><label>&nbsp;</label><button class="btn btn-success" type="button" id="rcv-btn" style="width:100%"><svg><use href="#i-check"/></svg>Sumar a existencias</button></div></div></div>
+            <div class="panel"><h3><svg><use href="#i-file"/></svg>Recibido hoy</h3><div class="list" id="rcv-log"></div></div>
           </div>
         </div>
       </section>
       <section data-view="orders">
-        <div class="shell-top"><div><h1>Purchase orders</h1><span class="sub">Created from the reorder list, emailed to suppliers</span></div><div class="right"><button class="btn btn-primary btn-sm" type="button" id="po-from-low"><svg><use href="#i-plus"/></svg>Order everything that is low</button></div></div>
+        <div class="shell-top"><div><h1>Órdenes de compra</h1><span class="sub">Se crean desde la lista de reorden y se envían por correo al proveedor</span></div><div class="right"><button class="btn btn-primary btn-sm" type="button" id="po-from-low"><svg><use href="#i-plus"/></svg>Pedir todo lo que está bajo</button></div></div>
         <div class="list" id="po-list"></div>
       </section>
       <section data-view="suppliers">
-        <div class="shell-top"><div><h1>Suppliers</h1><span class="sub">Who supplies what, and how fast</span></div></div>
+        <div class="shell-top"><div><h1>Proveedores</h1><span class="sub">Quién surte qué, y en cuánto tiempo</span></div></div>
         <div class="grid grid-3" id="sup-grid"></div>
       </section>
       <section data-view="reports">
-        <div class="shell-top"><div><h1>Reports</h1><span class="sub">Stock value, movement and what to watch</span></div></div>
+        <div class="shell-top"><div><h1>Reportes</h1><span class="sub">Valor del inventario, movimiento y qué vigilar</span></div></div>
         <div class="kpi-grid" id="rep-kpis"></div>
-        <div class="two"><div class="panel"><h3><svg><use href="#i-bar-chart"/></svg>Stock movement · last 7 days</h3><div id="rep-chart"></div></div><div class="panel"><h3><svg><use href="#i-trending-up"/></svg>Fastest movers</h3><div class="list" id="rep-top"></div></div></div>
+        <div class="two"><div class="panel"><h3><svg><use href="#i-bar-chart"/></svg>Movimiento · últimos 7 días</h3><div id="rep-chart"></div></div><div class="panel"><h3><svg><use href="#i-trending-up"/></svg>Los que más se mueven</h3><div class="list" id="rep-top"></div></div></div>
       </section>
     </div>
   </div>

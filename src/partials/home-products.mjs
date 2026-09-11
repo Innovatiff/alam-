@@ -7,7 +7,7 @@ export default (ctx) => {
       <h3>${p.name}</h3>
       <p>${p.short}.</p>
       <div class="card-art" data-play>${miniArt(p.slug)}</div>
-      <div class="card-foot">Explore ${I('arrow-right')}</div>
+      <div class="card-foot">Ver producto ${I('arrow-right')}</div>
       <a class="card-link" href="${root}products/${p.slug}.html" aria-label="${p.name}"></a>
     </article>`;
   const [web, staff, pos, ai, inv, custom] = products;
@@ -22,7 +22,7 @@ export default (ctx) => {
         <div class="icon-tile grad-${custom.color}">${I(custom.icon)}</div>
         <h3>${custom.name}: ${custom.short.toLowerCase()}</h3>
         <p>${custom.lead}</p>
-        <div class="card-foot">Explore custom software ${I('arrow-right')}</div>
+        <div class="card-foot">Ver software a la medida ${I('arrow-right')}</div>
       </div>
       <div class="examples compact">${custom.examples.map((e) => `<span class="chip">${I('check')}${e}</span>`).join('')}</div>
       <a class="card-link" href="${root}products/${custom.slug}.html" aria-label="${custom.name}"></a>

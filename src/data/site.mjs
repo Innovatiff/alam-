@@ -1,25 +1,26 @@
 /**
- * Site-wide configuration.  Edit this file, then run `npm run build`.
+ * Configuración general del sitio.  Edita este archivo y ejecuta `npm run build`.
  *
- * !! PLACEHOLDERS: the contact details below are placeholders (".example" domain,
- * !! 555 phone number).  Replace them with the real ones before publishing.
+ * !! MARCADORES: los datos de contacto son provisionales (dominio ".example",
+ * !! teléfono 555).  Reemplázalos por los reales antes de publicar.
  */
 export const site = {
   name: 'Innovatiff',
-  tagline: 'Software built for your business. Installed on site.',
+  lang: 'es',
+  tagline: 'Software hecho para tu negocio. Instalado en tu local.',
   description:
-    'Innovatiff designs and builds websites with online ordering, POS systems, employee management, AI receptionists, inventory software and exclusive custom software for businesses. Everything is installed on site, in your business.',
+    'Innovatiff diseña e instala sitios web con pedidos en línea, sistemas POS, gestión de empleados, recepcionistas con inteligencia artificial, software de inventario y software a la medida para negocios. Todo se instala en tu local.',
   url: 'https://www.innovatiff.example',
 
   contact: {
-    email: 'hello@innovatiff.example',
+    email: 'hola@innovatiff.example',
     phone: '+1 (555) 010-0100',
     phoneHref: 'tel:+15550100100',
-    address: 'Your city, your region',
-    hours: 'Monday to Friday, 9:00 to 18:00',
+    address: 'Leamington, Ontario, Canadá',
+    hours: 'Lunes a viernes, 9:00 a 18:00',
   },
 
-  /** Optional: a form endpoint (e.g. Formspree, Basin, your own API). Empty = the form opens the visitor's email app. */
+  /** Opcional: URL de un servicio de formularios (Formspree, Basin, tu propia API). Vacío = se abre el correo del visitante. */
   formEndpoint: '',
 
   social: [
@@ -29,44 +30,44 @@ export const site = {
   ],
 
   nav: [
-    { label: 'Home', href: 'index.html' },
-    { label: 'Products', href: 'products.html', children: 'products' },
-    { label: 'How it works', href: 'how-it-works.html' },
-    { label: 'Live samples', href: 'samples.html' },
-    { label: 'About', href: 'about.html' },
-    { label: 'Contact', href: 'contact.html' },
+    { label: 'Inicio', href: 'index.html' },
+    { label: 'Productos', href: 'products.html', children: 'products' },
+    { label: 'Cómo funciona', href: 'how-it-works.html' },
+    { label: 'Muestras en vivo', href: 'samples.html' },
+    { label: 'Nosotros', href: 'about.html' },
+    { label: 'Contacto', href: 'contact.html' },
   ],
-  cta: { label: 'Get a quote', href: 'contact.html' },
+  cta: { label: 'Pedir cotización', href: 'contact.html' },
 
-  /** Sample quotes — REPLACE with real client feedback before publishing. */
+  /** Testimonios de muestra: REEMPLÁZALOS por comentarios reales de clientes antes de publicar. */
   testimonials: [
     {
       quote:
-        'Orders now come straight to the kitchen printer. We stopped paying commissions to delivery apps and our regulars order from our own site.',
-      name: 'Restaurant owner',
-      role: 'Family restaurant · Website + ordering',
-      initials: 'RO',
+        'Los pedidos ahora llegan directo a la impresora de la cocina. Dejamos de pagar comisiones a las apps de reparto y nuestros clientes de siempre piden desde nuestro propio sitio.',
+      name: 'Dueño de restaurante',
+      role: 'Restaurante familiar · Sitio web + pedidos',
+      initials: 'DR',
     },
     {
       quote:
-        'The POS was installed in one afternoon. They set up every product, trained the team and stayed for the evening rush. Closing the till now takes five minutes.',
-      name: 'Café manager',
-      role: 'Coffee shop · POS system',
-      initials: 'CM',
+        'Instalaron el POS en una tarde. Cargaron cada producto, capacitaron al equipo y se quedaron durante la hora pico. Cerrar la caja ahora toma cinco minutos.',
+      name: 'Encargada de cafetería',
+      role: 'Cafetería · Sistema POS',
+      initials: 'EC',
     },
     {
       quote:
-        'The AI receptionist books appointments while we are with clients. We stopped missing calls and the summary arrives on my phone right after.',
-      name: 'Salon owner',
-      role: 'Hair salon · AI receptionist',
-      initials: 'SO',
+        'La recepcionista con IA agenda citas mientras atendemos clientes. Dejamos de perder llamadas y el resumen me llega al celular en cuanto cuelgan.',
+      name: 'Dueña de salón',
+      role: 'Salón de belleza · Recepcionista con IA',
+      initials: 'DS',
     },
     {
       quote:
-        'Everything runs on a small server in our back office. If the internet drops, sales and clock-ins keep working. That was the deciding factor for us.',
-      name: 'Store owner',
-      role: 'Retail store · POS + inventory + staff',
-      initials: 'ST',
+        'Todo corre en un pequeño servidor en nuestra oficina. Si se cae el internet, las ventas y las entradas del personal siguen funcionando. Eso fue lo que nos convenció.',
+      name: 'Dueño de tienda',
+      role: 'Tienda · POS + inventario + personal',
+      initials: 'DT',
     },
   ],
 };

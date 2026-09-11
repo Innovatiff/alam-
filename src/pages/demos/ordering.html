@@ -1,36 +1,88 @@
 <!--
-title: Sample · Online ordering
-description: Interactive sample of a restaurant website with online ordering and a live kitchen screen.
-bodyClass: demo
+title: Muestra · Sitio web con pedidos en línea
+description: Muestra interactiva de un sitio web de restaurante con pedidos en línea y un recorrido animado de lo que pasa en el restaurante.
+bodyClass: demo demo-rs
 extraCss: assets/css/demo.css
 extraJs: assets/js/demos/ordering.js
-demoName: Bella Cucina · Website + ordering
+demoName: La Terraza · Sitio web + pedidos en línea
 productSlug: website-ordering
 -->
 {{> head}}
 {{> demo-bar}}
-<main class="demo-main" id="main">
-  <div class="order-layout">
-    <section class="site-panel">
-      <header class="rest-hero">
-        <div class="rest-brand"><span class="rest-logo">B</span><div><b>Bella Cucina</b><small>Italian kitchen · Open today 11:30 to 22:00</small></div></div>
-        <h2>Order online, straight from our kitchen</h2>
-        <p>No app to download, no commission for us to pay. Pickup in 15 minutes or delivery in 30.</p>
-        <div class="rest-meta"><span class="tag green"><i class="dot"></i>Accepting orders</span><span class="chip">Pickup · 15 min</span><span class="chip">Delivery · 30 min · $3</span><span class="chip">4.9 ★ (312)</span></div>
-      </header>
-      <nav class="cats" id="cats" aria-label="Menu categories"></nav>
-      <div class="menu-grid" id="menu"></div>
-    </section>
-    <aside class="side-panel">
-      <div class="panel cart-panel" id="cart"></div>
-      <div class="panel kitchen-panel">
-        <div class="panel-head"><h3><svg><use href="#i-monitor"/></svg>Kitchen screen</h3><span class="tag">Installed on site</span></div>
-        <p class="muted small" style="margin-bottom:.8rem">This is what your kitchen or counter sees. New orders arrive here the moment a customer pays.</p>
-        <div class="printer-strip" id="printer"><div class="printer-head"><svg><use href="#i-printer"/></svg><span>Counter ticket printer</span><i class="status-dot on"></i></div><div class="printer-out" id="printer-out"></div></div>
-        <div class="list" id="orders"></div>
-      </div>
-    </aside>
-  </div>
-  <div class="cart-bar" id="cart-bar" hidden><button class="btn btn-primary" type="button" id="cart-bar-btn"></button></div>
+<main class="rs" id="main">
+  <header class="rs-nav" id="rs-nav">
+    <a class="rs-brand" href="#top"><span class="rs-logo">LT</span><span>La Terraza<small>Cocina de barrio</small></span></a>
+    <nav class="rs-links"><a href="#menu">Menú</a><a href="#nosotros">Nosotros</a><a href="#horario">Horario y ubicación</a><a href="#opiniones">Opiniones</a></nav>
+    <div class="rs-nav-actions">
+      <a class="rs-btn ghost" href="tel:+15550100200"><svg><use href="#i-phone"/></svg><span>Llamar</span></a>
+      <button class="rs-btn primary" type="button" id="rs-cart-btn"><svg><use href="#i-bag"/></svg><span>Mi pedido</span><b class="rs-badge" id="rs-count">0</b></button>
+    </div>
+  </header>
+
+  <section class="rs-hero" id="top">
+    <div class="rs-hero-media"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1800&q=75" data-fallback="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=75" alt="" loading="eager"><div class="rs-hero-fallback"></div></div>
+    <div class="rs-hero-inner">
+      <span class="rs-eyebrow"><i></i>Abierto hoy · 11:30 a 22:00</span>
+      <h1>Cocina de barrio,<br>hecha con calma</h1>
+      <p>Pizzas al horno de leña, pastas frescas y hamburguesas de la casa. Pide en línea y recoge en 20 minutos, o te lo llevamos a tu puerta.</p>
+      <div class="rs-hero-actions"><a class="rs-btn primary lg" href="#menu">Ver el menú y pedir <svg><use href="#i-arrow-right"/></svg></a><a class="rs-btn ghost lg" href="#horario">Cómo llegar</a></div>
+      <div class="rs-hero-badges"><span><b>4.9</b> ★ · 312 opiniones</span><span><svg><use href="#i-clock"/></svg>Recoger en 20 min</span><span><svg><use href="#i-truck"/></svg>Domicilio 30 a 40 min</span></div>
+    </div>
+    <div class="rs-status" id="rs-status" hidden></div>
+  </section>
+
+  <section class="rs-strip">
+    <div><svg><use href="#i-smartphone"/></svg><b>Pide desde tu celular</b><span>Sin descargar ninguna app</span></div>
+    <div><svg><use href="#i-credit-card"/></svg><b>Paga en línea o al recoger</b><span>Tarjeta, efectivo o transferencia</span></div>
+    <div><svg><use href="#i-bell"/></svg><b>Te avisamos cuando esté listo</b><span>Por SMS, al momento</span></div>
+  </section>
+
+  <section class="rs-menu" id="menu">
+    <div class="rs-menu-head"><h2>Nuestro menú</h2><p>Todo se prepara al momento. Elige tus platillos y agrégalos a tu pedido.</p></div>
+    <nav class="rs-cats" id="rs-cats" aria-label="Categorías"></nav>
+    <div id="rs-menu-body"></div>
+  </section>
+
+  <section class="rs-about" id="nosotros">
+    <div class="rs-about-media"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=75" data-fallback="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=75" alt="" loading="lazy"><div class="rs-img-fallback"></div></div>
+    <div class="rs-about-text">
+      <span class="rs-eyebrow"><i></i>Desde 2016</span>
+      <h2>Un restaurante de familia, con los vecinos de siempre</h2>
+      <p>Empezamos con un horno de leña y seis mesas. Hoy seguimos amasando cada mañana, comprando las verduras en el mercado de la esquina y saludando a cada cliente por su nombre.</p>
+      <ul><li><svg><use href="#i-check"/></svg>Masa fermentada 48 horas</li><li><svg><use href="#i-check"/></svg>Ingredientes de productores locales</li><li><svg><use href="#i-check"/></svg>Opciones vegetarianas y sin gluten</li></ul>
+    </div>
+  </section>
+
+  <section class="rs-info" id="horario">
+    <div class="rs-info-card"><h3><svg><use href="#i-clock"/></svg>Horario</h3><table><tr><td>Lunes a jueves</td><td>11:30 – 22:00</td></tr><tr><td>Viernes y sábado</td><td>11:30 – 23:30</td></tr><tr><td>Domingo</td><td>12:00 – 21:00</td></tr></table></div>
+    <div class="rs-info-card"><h3><svg><use href="#i-map-pin"/></svg>Ubicación</h3><p>Calle Erie 42, Leamington, ON<br>Estacionamiento gratis atrás del local</p><div class="rs-map" aria-hidden="true"><i class="pin"></i><span></span><span></span><span></span></div></div>
+    <div class="rs-info-card"><h3><svg><use href="#i-phone"/></svg>Contacto</h3><p><a href="tel:+15550100200">+1 (555) 010-0200</a><br><a href="mailto:hola@laterraza.example">hola@laterraza.example</a></p><p class="rs-muted">¿Un evento o grupo grande? Llámanos y lo organizamos.</p></div>
+  </section>
+
+  <section class="rs-reviews" id="opiniones">
+    <h2>Lo que dicen nuestros clientes</h2>
+    <div class="rs-review-grid">
+      <blockquote><div class="stars">★★★★★</div><p>"La pizza de pepperoni es la mejor de la zona. Pedí desde el celular y estaba lista justo cuando llegué."</p><footer>— Daniela R.</footer></blockquote>
+      <blockquote><div class="stars">★★★★★</div><p>"Atención de diez. La entrega llegó caliente y antes de lo prometido."</p><footer>— Jorge M.</footer></blockquote>
+      <blockquote><div class="stars">★★★★★</div><p>"Las pastas frescas se notan. El cheesecake de fresa, obligatorio."</p><footer>— Ana P.</footer></blockquote>
+    </div>
+  </section>
+
+  <footer class="rs-footer">
+    <div><span class="rs-logo sm">LT</span><b>La Terraza</b><span class="rs-muted">Calle Erie 42, Leamington · +1 (555) 010-0200</span></div>
+    <span class="rs-muted">Sitio web y sistema de pedidos por <b>Innovatiff</b></span>
+  </footer>
+
+  <aside class="rs-cart" id="rs-cart" aria-label="Tu pedido"></aside>
+  <div class="rs-cart-backdrop" id="rs-cart-backdrop"></div>
+  <div class="rs-cartbar" id="rs-cartbar" hidden><button class="rs-btn primary lg" type="button" id="rs-cartbar-btn"></button></div>
+
+  <button class="rs-kds-fab" type="button" id="rs-kds-fab" hidden><svg><use href="#i-monitor"/></svg>Ver la pantalla de cocina <b id="rs-kds-count">1</b></button>
+  <aside class="rs-kds" id="rs-kds" aria-label="Pantalla de cocina">
+    <div class="rs-kds-head"><div><span class="tag green"><i class="dot"></i>Lado del restaurante</span><h3>Pantalla de cocina · La Terraza</h3><small>Esto es lo que ve tu equipo. Toca los botones para cambiar el estado del pedido y mira cómo se actualiza lo que ve el cliente.</small></div><button class="icon-btn" type="button" id="rs-kds-close" aria-label="Cerrar">✕</button></div>
+    <div class="rs-kds-body"><div class="printer-strip"><div class="printer-head"><svg><use href="#i-printer"/></svg><span>Impresora del mostrador</span><i class="status-dot on"></i></div><div class="printer-out" id="rs-printer-out"></div></div><div class="list" id="rs-orders"></div></div>
+  </aside>
+
+  <div class="walk" id="walk" hidden></div>
 </main>
 {{> demo-footer}}

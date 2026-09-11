@@ -1,10 +1,10 @@
 <!--
-title: Sample · AI receptionist
-description: Interactive sample of the AI receptionist: simulated calls, live transcript, bookings into the calendar and call summaries.
+title: Muestra · Recepcionista con IA
+description: Muestra interactiva de la recepcionista con IA: llamadas simuladas, transcripción en vivo, citas en el calendario y resúmenes.
 bodyClass: demo
 extraCss: assets/css/demo.css
 extraJs: assets/js/demos/receptionist.js
-demoName: Bloom Salon · AI receptionist
+demoName: Salón Flor · Recepcionista con IA
 productSlug: ai-receptionist
 -->
 {{> head}}
@@ -12,21 +12,21 @@ productSlug: ai-receptionist
 <main class="demo-main" id="main">
   <div class="ai-layout">
     <div class="stack">
-      <div class="panel call-panel">
-        <div class="panel-head"><h3><svg><use href="#i-headset"/></svg>Phone line · Bloom Salon</h3><span class="tag green"><i class="dot" style="width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block"></i> AI receptionist answering</span></div>
+      <div class="panel call-panel" id="call-panel">
+        <div class="panel-head"><h3><svg><use href="#i-headset"/></svg>Línea telefónica · Salón Flor</h3><span class="tag green"><i class="dot" style="width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block"></i> La IA está contestando</span></div>
         <div class="call-sim" id="call-sim"></div>
       </div>
-      <div class="panel">
-        <div class="panel-head"><h3><svg><use href="#i-message"/></svg>Ask the receptionist yourself</h3><span class="muted small">Text version of the same assistant</span></div>
+      <div class="panel" id="chat-panel">
+        <div class="panel-head"><h3><svg><use href="#i-message"/></svg>Pregúntale tú a la recepcionista</h3><span class="muted small">Versión escrita de la misma asistente</span></div>
         <div class="chat" id="chat"></div>
-        <form class="chat-form" id="chat-form"><input class="input" id="chat-input" placeholder="Type a question, for example: are you open on Sunday?" autocomplete="off"><button class="btn btn-primary" type="submit"><svg><use href="#i-arrow-right"/></svg></button></form>
+        <form class="chat-form" id="chat-form"><input class="input" id="chat-input" placeholder="Escribe una pregunta, por ejemplo: ¿abren los domingos?" autocomplete="off"><button class="btn btn-primary" type="submit" aria-label="Enviar"><svg><use href="#i-arrow-right"/></svg></button></form>
         <div class="row" id="chat-chips" style="margin-top:.6rem"></div>
       </div>
     </div>
     <div class="stack">
       <div class="kpi-grid" id="ai-kpis"></div>
-      <div class="panel"><div class="panel-head"><h3><svg><use href="#i-calendar"/></svg>This week's appointments</h3><span class="muted small">Bookings made by the AI appear here instantly</span></div><div class="cal-grid" id="cal"></div></div>
-      <div class="panel"><div class="panel-head"><h3><svg><use href="#i-phone"/></svg>Call log</h3><span class="muted small">Every call, with a transcript</span></div><div class="list" id="call-log"></div></div>
+      <div class="panel" id="cal-panel"><div class="panel-head"><h3><svg><use href="#i-calendar"/></svg>Citas de esta semana</h3><span class="muted small">Las citas que agenda la IA aparecen aquí al instante</span></div><div class="cal-grid" id="cal"></div></div>
+      <div class="panel" id="log-panel"><div class="panel-head"><h3><svg><use href="#i-phone"/></svg>Registro de llamadas</h3><span class="muted small">Cada llamada, con su transcripción</span></div><div class="list" id="call-log"></div></div>
     </div>
   </div>
 </main>

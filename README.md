@@ -1,48 +1,69 @@
-# Innovatiff — website
+# Innovatiff — sitio web
 
-Marketing website for Innovatiff: websites with online ordering, POS systems, employee management,
-AI receptionists, inventory software and exclusive custom software, all installed on site.
+Sitio web de Innovatiff (en español): sitios web con pedidos en línea, sistemas POS, gestión de
+empleados, recepcionistas con IA, software de inventario y software a la medida, todo instalado en
+el local del cliente.
 
-The site is **static HTML, CSS and JavaScript with no dependencies**. It can be hosted anywhere
-(GitHub Pages, Netlify, Vercel, any web host) by uploading the repository as is.
+El sitio es **HTML, CSS y JavaScript estáticos, sin dependencias**. Se puede publicar en cualquier
+hosting (GitHub Pages, Netlify, Vercel, cualquier servidor) subiendo el repositorio tal cual.
 
-## Structure
+## Estructura
 
-| Path | What it is |
+| Ruta | Qué es |
 | --- | --- |
-| `index.html`, `products.html`, `how-it-works.html`, `samples.html`, `about.html`, `contact.html` | Generated pages (do not edit by hand, see below) |
-| `products/*.html` | Generated product pages, one per product |
-| `demos/*.html` | Generated interactive samples, one per product |
-| `assets/css/site.css` | Design system, animations and illustrations |
-| `assets/css/demo.css` | Shared styles for the interactive samples |
-| `assets/js/site.js` | Navigation, scroll animations, carousels, forms |
-| `assets/js/demos/*.js` | Logic of each interactive sample |
-| `src/` | **Source of the pages**: templates, partials and content |
-| `build.mjs` | Zero-dependency build script (Node 18+) |
+| `index.html`, `products.html`, `how-it-works.html`, `samples.html`, `about.html`, `contact.html` | Páginas generadas (no editar a mano, ver abajo) |
+| `products/*.html` | Páginas de producto generadas, una por producto |
+| `demos/*.html` | Muestras interactivas generadas, una por producto |
+| `assets/css/site.css` | Sistema de diseño, animaciones e ilustraciones |
+| `assets/css/demo.css` | Estilos de las muestras interactivas (incluye el sitio de restaurante y la guía paso a paso) |
+| `assets/js/site.js` | Navegación, animaciones al hacer scroll, carruseles, formulario |
+| `assets/js/demos/common.js` | Ayudantes compartidos de las muestras y el motor de la guía paso a paso |
+| `assets/js/demos/*.js` | Lógica de cada muestra |
+| `src/` | **Fuente de las páginas**: plantillas, parciales y contenido |
+| `build.mjs` | Generador estático sin dependencias (Node 18+) |
 
-## Editing content
+## Editar contenido
 
-1. **Business details, navigation, testimonials**: `src/data/site.mjs`.
-   The contact email, phone and address are placeholders — replace them before publishing.
-2. **Products** (names, features, steps, FAQ, on-site notes): `src/data/products.mjs`.
-3. **Pages**: `src/pages/*.html` (they use `{{> partial}}` includes and `{{variable}}` values).
-4. **Illustrations and mockups**: `src/data/mockups.mjs` (HTML) and the "mockups" section of `assets/css/site.css`.
+1. **Datos del negocio, navegación, testimonios**: `src/data/site.mjs`.
+   El correo, teléfono y dirección son **marcadores provisionales**: reemplázalos antes de publicar.
+2. **Productos** (nombres, funciones, pasos, preguntas, notas de instalación): `src/data/products.mjs`.
+3. **Páginas**: `src/pages/*.html` (usan `{{> parcial}}` para incluir fragmentos y `{{variable}}` para valores).
+4. **Ilustraciones y maquetas**: `src/data/mockups.mjs` (HTML) y la sección "mockups" de `assets/css/site.css`.
 
-Then rebuild:
+Después, vuelve a generar:
 
 ```bash
-npm run build      # regenerates the HTML files at the root, in products/ and demos/
-npm run serve      # optional: preview at http://localhost:8080
+npm run build      # regenera los archivos HTML en la raíz, en products/ y en demos/
+npm run serve      # opcional: vista previa en http://localhost:8080
 ```
 
-## Contact form
+## Logotipo
 
-By default the form opens the visitor's email app with the message pre-filled (no server needed).
-To receive submissions directly, set `formEndpoint` in `src/data/site.mjs` to a form service URL
-(for example Formspree or Basin) and rebuild.
+El logo se lee de archivos, así que cambiarlo no requiere tocar código:
 
-## Notes
+- `assets/img/logo-mark.svg`: ícono cuadrado (se usa en la barra de navegación, el pie de página y las muestras).
+- `assets/img/favicon.svg`, `assets/img/favicon.png`, `assets/img/icon-180.png`: favicons.
+- Si tienes un logotipo completo (ícono + nombre), guárdalo como `assets/img/logo.svg`, pon
+  `useFullLogo = true` en `src/partials/logo.mjs` y ejecuta `npm run build`.
 
-- Testimonials in `src/data/site.mjs` are sample quotes to be replaced with real client feedback.
-- The site respects `prefers-reduced-motion`.
-- Fonts: Inter from Google Fonts with a system-font fallback.
+## Fotos de la muestra de restaurante
+
+La muestra `demos/ordering.html` usa fotos de Unsplash cargadas desde su CDN (licencia Unsplash,
+uso comercial permitido). Si una foto no carga, la tarjeta muestra un fondo de color con la inicial
+del platillo. Para usar tus propias fotos, cambia las URLs en `assets/js/demos/ordering.js`
+(campo `img` de cada platillo y las imágenes de `src/pages/demos/ordering.html`).
+
+## Formulario de contacto
+
+Por defecto, el formulario abre la aplicación de correo del visitante con el mensaje ya escrito (no
+necesita servidor). Para recibir las solicitudes directamente, pon en `formEndpoint`
+(`src/data/site.mjs`) la URL de un servicio de formularios (por ejemplo Formspree o Basin) y
+vuelve a generar el sitio.
+
+## Notas
+
+- Los testimonios de `src/data/site.mjs` son ejemplos: reemplázalos por comentarios reales.
+- Las muestras no guardan nada; cada visita empieza desde cero. La guía paso a paso se muestra la
+  primera vez por sesión y se puede repetir con el botón "Ver guía paso a paso".
+- El sitio respeta `prefers-reduced-motion`.
+- Fuente: Inter (Google Fonts) con respaldo del sistema.

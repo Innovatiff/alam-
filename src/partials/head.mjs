@@ -3,14 +3,15 @@ export default (ctx) => {
   const title = ctx.title ? `${ctx.title} · ${site.name}` : `${site.name} · ${site.tagline}`;
   const description = ctx.description || site.description;
   return `<!DOCTYPE html>
-<html lang="en">
+<html lang="${site.lang || 'es'}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${title}</title>
 <meta name="description" content="${description}">
-<meta name="theme-color" content="#050816">
+<meta name="theme-color" content="#06060a">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${description}">
 <meta property="og:image" content="${site.url.replace(/\/$/, '')}/assets/img/og.jpg">
@@ -25,7 +26,7 @@ export default (ctx) => {
 ${ctx.extraCss ? `<link rel="stylesheet" href="${root}${ctx.extraCss}">` : ''}
 </head>
 <body class="${ctx.bodyClass || ''}">
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">Ir al contenido</a>
 <div class="page-veil" aria-hidden="true"></div>
 <div class="cursor-glow" aria-hidden="true"></div>
 {{> icons}}

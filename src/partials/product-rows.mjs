@@ -11,8 +11,8 @@ export default (ctx) => {
         <p class="lead" style="margin:1rem 0 1.3rem">${p.lead}</p>
         <ul class="checks" style="margin-bottom:1.6rem">${p.features.slice(0, 3).map((f) => `<li>${I('check')}<div><strong>${f.title}</strong><span>${f.desc}</span></div></li>`).join('')}</ul>
         <div class="row">
-          <a class="btn btn-primary" href="${root}products/${p.slug}.html">See the product ${I('arrow-right')}</a>
-          <a class="btn btn-ghost" href="${root}${p.demo.href}">${I('play')}Try the sample</a>
+          <a class="btn btn-primary" href="${root}products/${p.slug}.html">Ver el producto ${I('arrow-right')}</a>
+          <a class="btn btn-ghost" href="${root}${p.demo.href}">${I('play')}Probar la muestra</a>
         </div>
       </div>
       <a class="demo-preview" href="${root}products/${p.slug}.html" data-reveal="${i % 2 ? 'left' : 'right'}" aria-label="${p.name}">
