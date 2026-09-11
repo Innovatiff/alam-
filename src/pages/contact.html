@@ -1,0 +1,80 @@
+<!--
+title: Contact
+description: Get a quote from Innovatiff. Tell us about your business and we will suggest the right software, hardware and installation, with one clear price.
+-->
+{{> head}}
+{{> nav}}
+<section class="p-hero" style="padding-bottom:0">
+  <div class="orb blue" style="width:700px;height:700px;left:-300px;top:-200px"></div>
+  <div class="container center">
+    <span class="eyebrow" data-reveal="blur"><span class="dot"></span>Contact</span>
+    <h1 class="h-display" data-words style="margin:1.2rem auto 1.2rem;max-width:18ch">Let's talk about <span class="grad">your business</span></h1>
+    <p class="lead" data-reveal="blur" style="--d:400ms;margin:0 auto">Tell us a little about what you do and what slows you down. We reply within one business day with a suggested first step, and we can visit you for free.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <form class="card static pad-lg" data-contact data-endpoint="{{site.formEndpoint}}" data-email="{{site.contact.email}}" data-reveal="up" novalidate>
+        <h2 style="font-size:1.5rem;margin-bottom:.4rem">Request a quote</h2>
+        <p class="muted" style="margin-bottom:1.6rem">Free, no obligation. Fields marked * are required.</p>
+        <div class="form-grid">
+          <div class="field"><label for="f-name">Your name *</label><input id="f-name" name="name" type="text" required autocomplete="name"></div>
+          <div class="field"><label for="f-business">Business name</label><input id="f-business" name="business" type="text" autocomplete="organization"></div>
+          <div class="field"><label for="f-email">Email *</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
+          <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+          <div class="field full"><label for="f-type">Type of business</label>
+            <select id="f-type" name="type">
+              <option value="">Choose one…</option>
+              <option>Restaurant or takeaway</option><option>Café or bakery</option><option>Retail store</option><option>Salon or barber</option><option>Clinic or practice</option><option>Garage or workshop</option><option>Gym or studio</option><option>Hotel or B&amp;B</option><option>Wholesale or distribution</option><option>Services</option><option>Other</option>
+            </select>
+          </div>
+          <div class="field full"><label>I am interested in</label>
+            <div class="check-grid">
+              <label class="check"><input type="checkbox" name="interest" value="website-ordering"> Website + ordering system</label>
+              <label class="check"><input type="checkbox" name="interest" value="pos-system"> POS system</label>
+              <label class="check"><input type="checkbox" name="interest" value="employee-management"> Employee management</label>
+              <label class="check"><input type="checkbox" name="interest" value="ai-receptionist"> AI receptionist</label>
+              <label class="check"><input type="checkbox" name="interest" value="inventory-software"> Inventory software</label>
+              <label class="check"><input type="checkbox" name="interest" value="custom-software"> Custom software</label>
+              <label class="check"><input type="checkbox" name="interest" value="not-sure"> Not sure yet, advise me</label>
+            </div>
+          </div>
+          <div class="field full"><label for="f-message">What slows you down today?</label><textarea id="f-message" name="message" placeholder="For example: we lose calls during service, we pay 30% to delivery apps, closing the till takes an hour…"></textarea></div>
+        </div>
+        <div class="row" style="margin-top:1.4rem;justify-content:space-between">
+          <button class="btn btn-primary btn-lg" type="submit">Send request <svg class="arrow"><use href="#i-arrow-right"/></svg></button>
+          <span class="muted small">We never share your details.</span>
+        </div>
+        <div class="form-status" role="status" aria-live="polite"></div>
+      </form>
+
+      <div class="stack" data-stagger="120">
+        <div class="card static" data-reveal="right">
+          <h3>Reach us directly</h3>
+          <ul class="contact-list" style="list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.8rem">
+            <li><svg><use href="#i-mail"/></svg><a href="mailto:{{site.contact.email}}">{{site.contact.email}}</a></li>
+            <li><svg><use href="#i-phone"/></svg><a href="{{site.contact.phoneHref}}">{{site.contact.phone}}</a></li>
+            <li><svg><use href="#i-map-pin"/></svg><span>{{site.contact.address}}</span></li>
+            <li><svg><use href="#i-clock"/></svg><span>{{site.contact.hours}}</span></li>
+          </ul>
+        </div>
+        <div class="card static" data-reveal="right">
+          <h3>What happens next</h3>
+          <ol class="next-steps">
+            <li><b>1</b><div><strong>We reply within one business day</strong><span>With a first idea of what would help and a time for a call or visit.</span></div></li>
+            <li><b>2</b><div><strong>Free visit to your business</strong><span>We watch how you work and ask questions. About an hour.</span></div></li>
+            <li><b>3</b><div><strong>One clear quote</strong><span>Software, hardware, installation, training and support in one price.</span></div></li>
+          </ol>
+        </div>
+        <div class="card static gradient-border" data-reveal="right">
+          <h3>Prefer to see it first?</h3>
+          <p style="margin:.4rem 0 1rem">Every product has a working sample you can click through right now.</p>
+          <a class="btn btn-ghost" href="samples.html"><svg><use href="#i-play"/></svg>Open the live samples</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{> footer}}

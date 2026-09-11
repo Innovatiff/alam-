@@ -1,0 +1,43 @@
+<!--
+title: Sample · Build your own system
+description: Choose your type of business and the modules you need, and watch a tailored system assemble itself. Send the result as a quote request.
+bodyClass: demo
+extraCss: assets/css/demo.css
+extraJs: assets/js/demos/custom.js
+demoName: Build your own system
+productSlug: custom-software
+-->
+{{> head}}
+{{> demo-bar}}
+<main class="demo-main" id="main">
+  <div class="builder">
+    <div class="builder-config">
+      <div class="panel">
+        <div class="panel-head"><h3><span class="step-badge">1</span>What kind of business?</h3></div>
+        <div class="type-grid" id="types"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3><span class="step-badge">2</span>Which modules do you need?</h3><span class="muted small" id="mod-count"></span></div>
+        <div class="mod-grid" id="modules"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3><span class="step-badge">3</span>A few details</h3></div>
+        <div class="form-grid">
+          <div class="field"><label>Locations</label><div class="seg" id="locations"><button type="button" data-v="1" class="on">1</button><button type="button" data-v="2">2</button><button type="button" data-v="3">3 or more</button></div></div>
+          <div class="field"><label>Counters / registers <b id="term-label">1</b></label><input type="range" id="terminals" min="1" max="6" value="1" class="range"></div>
+          <div class="field full"><label>Extras</label><div class="check-grid">
+            <label class="check"><input type="checkbox" id="x-remote" checked> Secure access from home</label>
+            <label class="check"><input type="checkbox" id="x-backup"> Encrypted off-site backup</label>
+            <label class="check"><input type="checkbox" id="x-display"> Customer-facing display</label>
+            <label class="check"><input type="checkbox" id="x-multi"> Several languages</label>
+          </div></div>
+        </div>
+      </div>
+    </div>
+    <div class="builder-preview">
+      <div class="preview-app device" id="preview"></div>
+      <div class="panel summary" id="summary"></div>
+    </div>
+  </div>
+</main>
+{{> demo-footer}}

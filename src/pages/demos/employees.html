@@ -1,0 +1,69 @@
+<!--
+title: Sample · Employee management
+description: Interactive sample of the employee management software: schedule, time clock, leave and timesheets.
+bodyClass: demo
+extraCss: assets/css/demo.css
+extraJs: assets/js/demos/employees.js
+demoName: Sunrise Café · Employee management
+productSlug: employee-management
+-->
+{{> head}}
+{{> demo-bar}}
+<main class="demo-main" id="main">
+  <div class="shell">
+    <aside class="shell-side">
+      <div class="shell-brand"><i></i><div>Sunrise Café<small>Staff manager</small></div></div>
+      <nav class="shell-nav">
+        <button type="button" data-nav="dashboard"><svg><use href="#i-home"/></svg>Dashboard</button>
+        <button type="button" data-nav="schedule"><svg><use href="#i-calendar"/></svg>Schedule</button>
+        <button type="button" data-nav="clock"><svg><use href="#i-clock"/></svg>Time clock</button>
+        <button type="button" data-nav="leave"><svg><use href="#i-smile"/></svg>Leave <span class="count" id="leave-count"></span></button>
+        <button type="button" data-nav="timesheets"><svg><use href="#i-file"/></svg>Timesheets</button>
+      </nav>
+      <div class="shell-foot"><svg><use href="#i-server"/></svg><div>Running on site<small>Back-office server · clock-in tablet online</small></div></div>
+    </aside>
+    <div class="shell-main">
+      <section data-view="dashboard">
+        <div class="shell-top"><div><h1>Good morning, Maria</h1><span class="sub" id="today-label"></span></div><div class="right"><span class="hint"><svg><use href="#i-info"/></svg>Try: assign a shift, clock someone in, approve leave</span></div></div>
+        <div class="kpi-grid" id="kpis"></div>
+        <div class="two-wide">
+          <div class="panel"><div class="panel-head"><h3><svg><use href="#i-bar-chart"/></svg>Scheduled hours this week</h3><span class="muted small">Labour cost vs. hours</span></div><div id="hours-chart"></div></div>
+          <div class="panel"><h3><svg><use href="#i-users"/></svg>Who is in right now</h3><div class="list" id="who-in"></div></div>
+        </div>
+        <div class="panel"><h3><svg><use href="#i-calendar"/></svg>Today's shifts</h3><div class="list" id="today-shifts"></div></div>
+      </section>
+
+      <section data-view="schedule">
+        <div class="shell-top"><div><h1>Weekly schedule</h1><span class="sub" id="week-label"></span></div><div class="right"><button class="btn btn-ghost btn-sm" type="button" id="copy-week"><svg><use href="#i-refresh"/></svg>Copy last week</button><button class="btn btn-primary btn-sm" type="button" id="publish"><svg><use href="#i-bell"/></svg>Publish &amp; notify staff</button></div></div>
+        <div class="week-grid" id="week"></div>
+        <p class="muted small">Tap <b>+ Add shift</b> in any day to assign someone. Tap a shift to change or remove it. Open shifts are shown dashed.</p>
+      </section>
+
+      <section data-view="clock">
+        <div class="shell-top"><div><h1>Time clock</h1><span class="sub">This screen runs on the tablet at your entrance</span></div></div>
+        <div class="two">
+          <div class="panel clock-tablet">
+            <div id="clock-time" class="clock-time"></div>
+            <div id="clock-stage"></div>
+          </div>
+          <div class="stack">
+            <div class="panel"><h3><svg><use href="#i-users"/></svg>Clocked in now</h3><div class="list" id="clocked-in"></div></div>
+            <div class="panel"><h3><svg><use href="#i-file"/></svg>Today's log</h3><div class="list" id="clock-log"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section data-view="leave">
+        <div class="shell-top"><div><h1>Leave requests</h1><span class="sub">Requested by staff from their phones</span></div></div>
+        <div class="list" id="leave-list"></div>
+      </section>
+
+      <section data-view="timesheets">
+        <div class="shell-top"><div><h1>Timesheets</h1><span class="sub" id="ts-label"></span></div><div class="right"><button class="btn btn-ghost btn-sm" type="button" id="approve-all"><svg><use href="#i-check"/></svg>Approve all</button><button class="btn btn-primary btn-sm" type="button" id="export"><svg><use href="#i-download"/></svg>Export for payroll (CSV)</button></div></div>
+        <div class="panel table-wrap"><table class="table" id="ts-table"></table></div>
+        <p class="muted small">Hours come from clock-ins on the tablet; scheduled hours are shown for comparison. Overtime above 38 hours is flagged automatically.</p>
+      </section>
+    </div>
+  </div>
+</main>
+{{> demo-footer}}

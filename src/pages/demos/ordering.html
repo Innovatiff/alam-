@@ -1,0 +1,36 @@
+<!--
+title: Sample · Online ordering
+description: Interactive sample of a restaurant website with online ordering and a live kitchen screen.
+bodyClass: demo
+extraCss: assets/css/demo.css
+extraJs: assets/js/demos/ordering.js
+demoName: Bella Cucina · Website + ordering
+productSlug: website-ordering
+-->
+{{> head}}
+{{> demo-bar}}
+<main class="demo-main" id="main">
+  <div class="order-layout">
+    <section class="site-panel">
+      <header class="rest-hero">
+        <div class="rest-brand"><span class="rest-logo">B</span><div><b>Bella Cucina</b><small>Italian kitchen · Open today 11:30 to 22:00</small></div></div>
+        <h2>Order online, straight from our kitchen</h2>
+        <p>No app to download, no commission for us to pay. Pickup in 15 minutes or delivery in 30.</p>
+        <div class="rest-meta"><span class="tag green"><i class="dot"></i>Accepting orders</span><span class="chip">Pickup · 15 min</span><span class="chip">Delivery · 30 min · $3</span><span class="chip">4.9 ★ (312)</span></div>
+      </header>
+      <nav class="cats" id="cats" aria-label="Menu categories"></nav>
+      <div class="menu-grid" id="menu"></div>
+    </section>
+    <aside class="side-panel">
+      <div class="panel cart-panel" id="cart"></div>
+      <div class="panel kitchen-panel">
+        <div class="panel-head"><h3><svg><use href="#i-monitor"/></svg>Kitchen screen</h3><span class="tag">Installed on site</span></div>
+        <p class="muted small" style="margin-bottom:.8rem">This is what your kitchen or counter sees. New orders arrive here the moment a customer pays.</p>
+        <div class="printer-strip" id="printer"><div class="printer-head"><svg><use href="#i-printer"/></svg><span>Counter ticket printer</span><i class="status-dot on"></i></div><div class="printer-out" id="printer-out"></div></div>
+        <div class="list" id="orders"></div>
+      </div>
+    </aside>
+  </div>
+  <div class="cart-bar" id="cart-bar" hidden><button class="btn btn-primary" type="button" id="cart-bar-btn"></button></div>
+</main>
+{{> demo-footer}}

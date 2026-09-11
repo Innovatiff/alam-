@@ -1,0 +1,13 @@
+export const logoMark = (size = 34) => `<svg width="${size}" height="${size}" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="lg-mark" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5b9dff"/><stop offset=".55" stop-color="#4f46e5"/><stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="9" fill="url(#lg-mark)"/>
+  <rect x="2" y="2" width="28" height="14" rx="7" fill="#fff" fill-opacity=".08"/>
+  <path d="M16 12.5v11" stroke="#fff" stroke-width="4.2" stroke-linecap="round"/>
+  <circle cx="16" cy="7.4" r="2.5" fill="#fff"/>
+  <path d="M23.2 5.2l.7 1.9 1.9.7-1.9.7-.7 1.9-.7-1.9-1.9-.7 1.9-.7.7-1.9z" fill="#c7d2fe"/>
+</svg>`;
+export default () => logoMark();

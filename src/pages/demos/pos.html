@@ -1,0 +1,44 @@
+<!--
+title: Sample · POS register
+description: Interactive sample of the POS system: ring up products, take cash or card, print receipts and close the day.
+bodyClass: demo
+extraCss: assets/css/demo.css
+extraJs: assets/js/demos/pos.js
+demoName: Sunrise Café · POS register
+productSlug: pos-system
+-->
+{{> head}}
+{{> demo-bar}}
+<main class="demo-main" id="main">
+  <div class="shell-top" style="margin-bottom:1rem">
+    <div class="seg"><button type="button" data-nav="register"><svg><use href="#i-pos"/></svg> Register</button><button type="button" data-nav="sales">Sales today</button><button type="button" data-nav="eod">End of day</button></div>
+    <div class="right">
+      <span class="pill"><span class="dot"></span>Register 1 · Sam K.</span>
+      <label class="offline-toggle"><span class="switch" id="offline" role="switch" aria-checked="false" tabindex="0"></span><span>Simulate internet loss</span></label>
+    </div>
+  </div>
+  <div class="offline-banner" style="margin-bottom:1rem"><svg><use href="#i-wifi-off"/></svg>Internet is down. The POS keeps selling: every sale is saved on the on-site server and will sync when the connection returns.</div>
+  <section data-view="register">
+    <div class="pos-layout">
+      <div class="pos-left">
+        <div class="pos-toolbar"><div class="search"><svg><use href="#i-search"/></svg><input id="pos-search" placeholder="Search, or type a barcode…" aria-label="Search products"></div><nav class="cats" id="pos-cats"></nav><span class="hint"><svg><use href="#i-scan"/></svg>Try scanning: type <b>5012</b> then Enter</span></div>
+        <div class="pos-products" id="pos-products"></div>
+      </div>
+      <div class="pos-right panel" id="pos-cart"></div>
+    </div>
+  </section>
+  <section data-view="sales">
+    <div class="shell-top"><div><h1>Sales today</h1><span class="sub" id="sales-sub"></span></div></div>
+    <div class="panel table-wrap"><table class="table" id="sales-table"></table></div>
+  </section>
+  <section data-view="eod">
+    <div class="shell-top"><div><h1>End of day</h1><span class="sub">Everything below is calculated automatically. Closing the register takes one tap.</span></div></div>
+    <div class="kpi-grid" id="eod-kpis"></div>
+    <div class="two">
+      <div class="panel"><h3><svg><use href="#i-credit-card"/></svg>By payment type</h3><div class="list" id="eod-pay"></div></div>
+      <div class="panel"><h3><svg><use href="#i-trending-up"/></svg>Top products</h3><div class="list" id="eod-top"></div></div>
+    </div>
+    <div class="panel"><div class="panel-head"><h3><svg><use href="#i-lock"/></svg>Close register</h3><button class="btn btn-primary" type="button" id="close-day"><svg><use href="#i-printer"/></svg>Print Z report and close</button></div><p class="muted small">Counts the cash drawer against recorded cash sales, prints the report, and sends a copy to your email. Stock levels are already updated in the inventory software.</p></div>
+  </section>
+</main>
+{{> demo-footer}}
