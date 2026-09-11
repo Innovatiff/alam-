@@ -1,5 +1,7 @@
 /* Shared helpers for the interactive samples */
 window.Demo = (() => {
+  const lang = (document.documentElement.lang || 'es').slice(0, 2) === 'en' ? 'en' : 'es';
+  const x = (es, en) => (lang === 'en' ? en : es);
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const money = (n) => (n < 0 ? '-' : '') + '$' + Math.abs(n).toFixed(2);
@@ -29,7 +31,7 @@ window.Demo = (() => {
       }
       const card = $('.modal-card', modalEl);
       card.className = `modal-card ${cls}`;
-      card.innerHTML = `<button class="icon-btn modal-x" type="button" aria-label="Close">${icon('x')}</button>${html}`;
+      card.innerHTML = `<button class="icon-btn modal-x" type="button" aria-label="${x('Cerrar', 'Close')}">${icon('x')}</button>${html}`;
       $('.modal-x', card).addEventListener('click', modal.close);
       requestAnimationFrame(() => modalEl.classList.add('open'));
       return card;
@@ -56,12 +58,12 @@ window.Demo = (() => {
     setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
   };
 
-  return { $, $$, money, toast, modal, views, icon, el, time, pad, esc, download };
+  return { $, $$, money, toast, modal, views, icon, el, time, pad, esc, download, lang, x };
 })();
 
 /* ===== Guided tour (spotlight + step cards) ===== */
 window.Demo.tour = (() => {
-  const { $, $$, el, icon } = window.Demo;
+  const { $, $$, el, icon, x } = window.Demo;
   let steps = [], i = 0, root = null, spot = null, card = null, cleanup = null, onEnd = null, key = '';
   const pad = 8;
 
@@ -97,11 +99,11 @@ window.Demo.tour = (() => {
   const render = () => {
     const s = steps[i];
     const last = i === steps.length - 1;
-    card.innerHTML = `<div class="tour-head"><span class="tour-count">${s.target || i > 0 ? `Paso ${i} de ${steps.length - 1}` : 'Bienvenido'}</span><button class="icon-btn tour-x" type="button" aria-label="Cerrar guía">${icon('x')}</button></div>
+    card.innerHTML = `<div class="tour-head"><span class="tour-count">${s.target || i > 0 ? `${x('Paso', 'Step')} ${i} ${x('de', 'of')} ${steps.length - 1}` : x('Bienvenido', 'Welcome')}</span><button class="icon-btn tour-x" type="button" aria-label="${x('Cerrar guía', 'Close guide')}">${icon('x')}</button></div>
       <h3>${s.title}</h3><p>${s.text}</p>
       ${s.action ? `<div class="tour-action">${icon('hand')}<span>${s.action}</span></div>` : ''}
       <div class="tour-foot"><div class="tour-dots">${steps.map((_, k) => `<i class="${k === i ? 'on' : k < i ? 'done' : ''}"></i>`).join('')}</div>
-        <div class="row" style="gap:.4rem">${i > 0 ? `<button class="btn btn-ghost btn-xs" type="button" data-prev>${icon('arrow-left')}Anterior</button>` : ''}<button class="btn btn-primary btn-xs" type="button" data-next>${last ? `${icon('check')}Terminar` : i === 0 ? `Empezar ${icon('arrow-right')}` : `Siguiente ${icon('arrow-right')}`}</button></div></div>`;
+        <div class="row" style="gap:.4rem">${i > 0 ? `<button class="btn btn-ghost btn-xs" type="button" data-prev>${icon('arrow-left')}${x('Anterior', 'Back')}</button>` : ''}<button class="btn btn-primary btn-xs" type="button" data-next>${last ? `${icon('check')}${x('Terminar', 'Finish')}` : i === 0 ? `${x('Empezar', 'Start')} ${icon('arrow-right')}` : `${x('Siguiente', 'Next')} ${icon('arrow-right')}`}</button></div></div>`;
     $('.tour-x', card).addEventListener('click', end);
     $('[data-next]', card).addEventListener('click', () => (last ? end() : go(i + 1)));
     const prev = $('[data-prev]', card); if (prev) prev.addEventListener('click', () => go(i - 1));

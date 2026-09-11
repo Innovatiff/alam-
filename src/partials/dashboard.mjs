@@ -1,2 +1,2 @@
-import { dashboard } from '../data/mockups.mjs';
-export default (ctx) => dashboard(ctx.site);
+import { mockups } from '../data/mockups.mjs';
+export default (ctx) => mockups(ctx.lang).dashboard(ctx.site);

@@ -8,7 +8,14 @@
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const coarse = window.matchMedia('(hover: none)').matches;
   const clamp = (n, a, b) => Math.min(b, Math.max(a, n));
+  const LANG = (document.documentElement.lang || 'es').slice(0, 2) === 'en' ? 'en' : 'es';
+  const x = (es, en) => (LANG === 'en' ? en : es);
   document.documentElement.classList.add('js');
+
+  /* ---------- language switch: remember the choice ---------- */
+  $$('[data-lang-switch]').forEach((a) => a.addEventListener('click', () => {
+    try { localStorage.setItem('lang', a.dataset.langSwitch); } catch (err) { /* ignore */ }
+  }));
 
   /* ---------- header ---------- */
   const onScroll = () => document.body.classList.toggle('is-scrolled', window.scrollY > 24);
@@ -20,7 +27,7 @@
     toggle.addEventListener('click', () => {
       const open = document.body.classList.toggle('menu-open');
       toggle.setAttribute('aria-expanded', String(open));
-      toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      toggle.setAttribute('aria-label', open ? (toggle.dataset.labelClose || 'Close menu') : (toggle.dataset.labelOpen || 'Open menu'));
     });
   }
   $$('.has-menu > .nav-link').forEach((btn) => {
@@ -397,18 +404,18 @@
           const res = await fetch(endpoint, { method: 'POST', headers: { Accept: 'application/json' }, body: data });
           if (!res.ok) throw new Error('bad status');
           form.reset();
-          setStatus('Gracias. Recibimos tu mensaje y te respondemos en un día hábil.', true);
+          setStatus(x('Gracias. Recibimos tu mensaje y te respondemos en un día hábil.', 'Thank you. We received your message and will reply within one business day.'), true);
         } catch (err) {
-          setStatus('Algo falló al enviar el formulario. Escríbenos o llámanos directamente.', false);
+          setStatus(x('Algo falló al enviar el formulario. Escríbenos o llámanos directamente.', 'Something went wrong sending the form. Email or call us directly.'), false);
         }
         btn.disabled = false;
       } else {
         const lines = [];
         data.forEach((v, k) => { if (v) lines.push(`${k}: ${v}`); });
-        const subject = encodeURIComponent(`Solicitud de cotización de ${data.get('nombre') || 'un visitante del sitio'}`);
+        const subject = encodeURIComponent(x(`Solicitud de cotización de ${data.get('nombre') || 'un visitante del sitio'}`, `Quote request from ${data.get('nombre') || 'a website visitor'}`));
         const body = encodeURIComponent(lines.join('\n'));
         window.location.href = `mailto:${form.dataset.email}?subject=${subject}&body=${body}`;
-        setStatus('Se abrirá tu aplicación de correo con el mensaje listo para enviar.', true);
+        setStatus(x('Se abrirá tu aplicación de correo con el mensaje listo para enviar.', 'Your email app will open with the message ready to send.'), true);
       }
     });
     const params = new URLSearchParams(location.search);

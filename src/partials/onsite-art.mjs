@@ -1,2 +1,2 @@
-import { onsiteArt } from '../data/mockups.mjs';
-export default () => onsiteArt();
+import { mockups } from '../data/mockups.mjs';
+export default (ctx) => mockups(ctx.lang).onsiteArt();

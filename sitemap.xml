@@ -1,15 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.innovatiff.example/about.html</loc></url>
-  <url><loc>https://www.innovatiff.example/contact.html</loc></url>
-  <url><loc>https://www.innovatiff.example/how-it-works.html</loc></url>
-  <url><loc>https://www.innovatiff.example/</loc></url>
-  <url><loc>https://www.innovatiff.example/products.html</loc></url>
-  <url><loc>https://www.innovatiff.example/samples.html</loc></url>
-  <url><loc>https://www.innovatiff.example/products/website-ordering.html</loc></url>
-  <url><loc>https://www.innovatiff.example/products/employee-management.html</loc></url>
-  <url><loc>https://www.innovatiff.example/products/pos-system.html</loc></url>
-  <url><loc>https://www.innovatiff.example/products/ai-receptionist.html</loc></url>
-  <url><loc>https://www.innovatiff.example/products/inventory-software.html</loc></url>
-  <url><loc>https://www.innovatiff.example/products/custom-software.html</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.innovatiff.example/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/about.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/en/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/about.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/contact.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/en/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/contact.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/how-it-works.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/how-it-works.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/how-it-works.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/how-it-works.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/en/how-it-works.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/how-it-works.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/how-it-works.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/how-it-works.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/en/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/products.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/products.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/products.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/products.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/en/products.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/products.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/products.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/products.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/samples.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/samples.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/samples.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/samples.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/en/samples.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/samples.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/samples.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/samples.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/products/website-ordering.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/products/website-ordering.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/products/website-ordering.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/products/website-ordering.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/en/products/website-ordering.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/products/website-ordering.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/products/website-ordering.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/products/website-ordering.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/products/employee-management.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/products/employee-management.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/products/employee-management.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/products/employee-management.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/en/products/employee-management.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/products/employee-management.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/products/employee-management.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/products/employee-management.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/products/pos-system.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/products/pos-system.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/products/pos-system.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/products/pos-system.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/en/products/pos-system.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/products/pos-system.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/products/pos-system.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/products/pos-system.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/products/ai-receptionist.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/products/ai-receptionist.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/products/ai-receptionist.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/products/ai-receptionist.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/en/products/ai-receptionist.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/products/ai-receptionist.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/products/ai-receptionist.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/products/ai-receptionist.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/products/inventory-software.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/products/inventory-software.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/products/inventory-software.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/products/inventory-software.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/en/products/inventory-software.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/products/inventory-software.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/products/inventory-software.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/products/inventory-software.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/products/custom-software.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/products/custom-software.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/products/custom-software.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/products/custom-software.html"/>
+  </url>
+  <url>
+    <loc>https://www.innovatiff.example/en/products/custom-software.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.innovatiff.example/products/custom-software.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.innovatiff.example/en/products/custom-software.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.innovatiff.example/products/custom-software.html"/>
+  </url>
 </urlset>

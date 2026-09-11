@@ -1,381 +1,304 @@
 /**
- * Catálogo de productos.  Cada entrada genera su página (products/<slug>.html),
- * el menú de navegación, la página de productos y las tarjetas del inicio.
+ * Catálogo de productos / Product catalogue.
+ * Cada entrada genera su página (products/<slug>.html y en/products/<slug>.html), el menú,
+ * la página de productos y las tarjetas del inicio.  Cada texto se escribe en los dos idiomas
+ * con x('español', 'english').
  */
-export const products = [
-  {
-    slug: 'website-ordering',
-    name: 'Sitio web + pedidos en línea',
-    short: 'Tu propio sitio con pedidos en línea, sin comisiones',
-    icon: 'globe',
-    color: 'blue',
-    headline: 'Tu propio sitio web con <span class="grad">pedidos en línea</span> integrados',
-    lead: 'Un sitio web rápido y moderno para tu negocio, con pedidos integrados. Tus clientes piden desde el celular, el pedido llega al instante a tu mostrador o cocina, y tú te quedas con el 100 % de cada venta.',
-    metaDescription: 'Sitio web a la medida con sistema de pedidos en línea para recoger o a domicilio. Los pedidos se imprimen en tu mostrador, sin comisiones, instalado en tu local.',
-    kpis: [
-      { icon: 'percent', text: '0 % de comisión por pedido' },
-      { icon: 'smartphone', text: 'Funciona en cualquier celular' },
-      { icon: 'printer', text: 'Los pedidos se imprimen en tu mostrador' },
-    ],
-    features: [
-      { icon: 'globe', title: 'Un sitio con tu identidad', desc: 'Diseño a la medida, tu logo, tus fotos y tu dominio. Rápido en cualquier celular y fácil de encontrar en Google.' },
-      { icon: 'bag', title: 'Pedidos para recoger o a domicilio', desc: 'Tus clientes eligen platillos, opciones y extras, escogen la hora y pagan en línea o al recoger.' },
-      { icon: 'pen', title: 'Un menú que tú mismo editas', desc: 'Cambia precios, agrega promociones o marca un platillo como agotado desde tu celular en segundos. Sin programadores.' },
-      { icon: 'printer', title: 'Pedidos directo a la cocina', desc: 'Cada pedido se imprime automáticamente o aparece en la pantalla de cocina en el momento en que se realiza.' },
-      { icon: 'message', title: 'Avisos al cliente', desc: 'El cliente recibe la confirmación y el mensaje de "tu pedido está listo" por SMS o correo.' },
-      { icon: 'bar-chart', title: 'Reportes y lista de clientes', desc: 'Mira qué se vende más, tus horas pico y tus clientes frecuentes. Los datos de tus clientes son tuyos.' },
-    ],
-    how: [
-      { tag: 'Cliente', title: 'El cliente pide desde tu sitio', desc: 'Abre tu sitio web en su celular, revisa el menú, elige opciones y paga. No necesita descargar ninguna app.', art: 'phone-order' },
-      { tag: 'Tu mostrador', title: 'El pedido llega a tu mostrador', desc: 'En segundos se imprime en la impresora de tickets o aparece en la tableta que instalamos en tu local. Lo aceptas con un toque.', art: 'ticket' },
-      { tag: 'Tu cocina', title: 'Lo preparas y lo marcas como listo', desc: 'Tocas "Listo" y el cliente recibe el aviso. Si es a domicilio, tu repartidor ve la dirección, el teléfono y un enlace al mapa.', art: 'status' },
-      { tag: 'Reportes', title: 'Todo queda registrado', desc: 'Ventas, clientes y horas pico se guardan en tu sistema local y se muestran en reportes sencillos que lees en un minuto.', art: 'report' },
-    ],
-    onsite: {
-      title: 'Instalado en tu mostrador',
-      desc: 'El sitio web está en internet para que tus clientes lo abran desde cualquier lugar. La estación de pedidos, la impresora de tickets o la pantalla de cocina las instalamos nosotros en tu negocio y las conectamos al sitio. Si se cae tu internet, los pedidos ya recibidos se quedan en la estación.',
-      items: [
-        'Tableta de pedidos e impresora de tickets instaladas y configuradas',
-        'Menú, fotos y precios cargados por nosotros',
-        'Tu equipo capacitado para aceptar y gestionar pedidos',
-        'Se conecta con nuestro POS y nuestro software de inventario',
+export const getProducts = (lang = 'es') => {
+  const x = (es, en) => (lang === 'en' ? en : es);
+  return [
+    {
+      slug: 'website-ordering',
+      name: x('Sitio web + pedidos en línea', 'Website + online ordering'),
+      short: x('Tu sitio, tus pedidos, sin comisiones', 'Your site, your orders, no commissions'),
+      icon: 'globe',
+      color: 'blue',
+      headline: x('Tu propio sitio web con <span class="grad">pedidos en línea</span>', 'Your own website with <span class="grad">online ordering</span>'),
+      lead: x('Tus clientes piden desde el celular. El pedido llega a tu cocina al instante. Tú te quedas con el 100 %.', 'Customers order from their phone. The order reaches your kitchen instantly. You keep 100%.'),
+      metaDescription: x('Sitio web a la medida con pedidos en línea para recoger o a domicilio. Sin comisiones, instalado en tu local.', 'Custom website with online ordering for pickup or delivery. No commissions, installed on site.'),
+      kpis: [
+        { icon: 'percent', text: x('0 % de comisión', '0% commission') },
+        { icon: 'smartphone', text: x('Sin descargar apps', 'No app to download') },
+        { icon: 'printer', text: x('Se imprime en tu cocina', 'Prints in your kitchen') },
       ],
-      hardware: [
-        { icon: 'tablet', name: 'Tableta de pedidos' },
-        { icon: 'printer', name: 'Impresora de tickets' },
-        { icon: 'monitor', name: 'Pantalla de cocina' },
+      features: [
+        { icon: 'globe', title: x('Un sitio con tu identidad', 'A site with your brand'), desc: x('Tu logo, tus fotos, tu dominio.', 'Your logo, your photos, your domain.') },
+        { icon: 'bag', title: x('Recoger o a domicilio', 'Pickup or delivery'), desc: x('Opciones, extras, hora y pago en línea.', 'Options, extras, time slot and online payment.') },
+        { icon: 'pen', title: x('Menú que editas tú', 'A menu you edit yourself'), desc: x('Precios y agotados desde tu celular.', 'Prices and sold-outs from your phone.') },
+        { icon: 'message', title: x('Avisos automáticos', 'Automatic notifications'), desc: x('SMS de confirmación y de "listo".', 'Confirmation and "ready" texts.') },
       ],
+      how: [
+        { tag: x('Cliente', 'Customer'), title: x('Pide desde tu sitio', 'Orders from your site'), desc: x('Sin apps ni comisiones.', 'No apps, no commissions.'), art: 'phone-order' },
+        { tag: x('Tu cocina', 'Your kitchen'), title: x('El ticket se imprime solo', 'The ticket prints itself'), desc: x('Y aparece en la pantalla de cocina.', 'And shows up on the kitchen screen.'), art: 'ticket' },
+        { tag: x('Cliente', 'Customer'), title: x('Recibe el aviso de listo', 'Gets the ready alert'), desc: x('Por SMS, en el momento.', 'By text, the moment it is ready.'), art: 'status' },
+      ],
+      onsite: {
+        title: x('Instalado en tu mostrador', 'Installed at your counter'),
+        items: [x('Tableta de pedidos e impresora de tickets', 'Order tablet and ticket printer'), x('Menú y fotos cargados por nosotros', 'Menu and photos loaded by us'), x('Equipo capacitado en 20 minutos', 'Staff trained in 20 minutes')],
+        hardware: [
+          { icon: 'tablet', name: x('Tableta de pedidos', 'Order tablet') },
+          { icon: 'printer', name: x('Impresora de tickets', 'Ticket printer') },
+          { icon: 'monitor', name: x('Pantalla de cocina', 'Kitchen screen') },
+        ],
+      },
+      demo: {
+        href: 'demos/ordering.html',
+        title: x('Prueba el restaurante de muestra', 'Try the sample restaurant'),
+        desc: x('Haz un pedido real y mira, paso a paso, lo que pasa en el restaurante.', 'Place a real order and watch, step by step, what happens in the restaurant.'),
+        bullets: [x('Menú con fotos y carrito', 'Menu with photos and cart'), x('Pago para recoger o a domicilio', 'Pickup or delivery checkout'), x('Recorrido animado de la cocina', 'Animated kitchen walkthrough')],
+      },
     },
-    demo: {
-      href: 'demos/ordering.html',
-      title: 'Prueba el sitio de restaurante de muestra',
-      desc: 'Navega un menú real con fotos, agrega platillos al carrito, paga y mira, paso a paso, lo que verías en tu restaurante en cuanto entra el pedido.',
-      bullets: ['Sitio web completo con menú, fotos y carrito', 'Pago para recoger o a domicilio', 'Recorrido animado de lo que pasa en tu restaurante'],
-    },
-    faq: [
-      { q: '¿Puedo conservar mi sitio web actual?', a: 'Sí. Podemos agregar el sistema de pedidos a tu sitio actual o construir un sitio nuevo alrededor de él. La mayoría prefiere un sitio nuevo para que todo combine.' },
-      { q: '¿Necesito un programador para cambiar el menú?', a: 'No. Entras desde tu celular o computadora, cambias lo que necesites y queda publicado al instante.' },
-      { q: '¿Cómo funcionan los pagos?', a: 'Tus clientes pueden pagar en línea con tarjeta o pagar al recoger. Los pagos en línea pasan por un proveedor de pagos directo a tu cuenta bancaria. Nosotros no cobramos comisión por pedido.' },
-      { q: '¿Y los repartidores?', a: 'El sistema funciona con tus propios repartidores: cada pedido muestra la dirección, el teléfono y un enlace al mapa. Integraciones con apps de reparto, bajo pedido.' },
-    ],
-  },
 
-  {
-    slug: 'employee-management',
-    name: 'Gestión de empleados',
-    short: 'Horarios, reloj checador y hojas de horas en un solo lugar',
-    icon: 'users',
-    color: 'indigo',
-    headline: 'Horarios, reloj checador y <span class="grad">hojas de horas</span> en un solo lugar',
-    lead: 'Arma la semana en minutos, deja que tu personal marque entrada en una tableta en la puerta, controla horas, descansos y permisos automáticamente, y exporta las horas listas para la nómina.',
-    metaDescription: 'Software de gestión de empleados con horarios por turnos, reloj checador en tu local, permisos y hojas de horas listas para nómina. Instalado en tu negocio.',
-    kpis: [
-      { icon: 'calendar', text: 'Horario semanal en minutos' },
-      { icon: 'clock', text: 'Entrada con PIN o código QR' },
-      { icon: 'file', text: 'Exportación lista para nómina' },
-    ],
-    features: [
-      { icon: 'calendar', title: 'Horarios de arrastrar y soltar', desc: 'Arma el rol semanal, copia la semana anterior y mira de un vistazo los turnos abiertos y la disponibilidad de cada quien.' },
-      { icon: 'clock', title: 'Reloj checador en la puerta', desc: 'El personal marca entrada y salida en la tableta que instalamos. Con PIN o código QR, y foto opcional, para que las horas sean exactas.' },
-      { icon: 'bell', title: 'Avisos de turno', desc: 'Cada empleado ve sus turnos en su celular y recibe un recordatorio antes de cada uno. Los cambios se avisan al instante.' },
-      { icon: 'smile', title: 'Permisos y disponibilidad', desc: 'El personal pide días libres desde su celular. Tú apruebas con un toque y el horario se actualiza solo.' },
-      { icon: 'dollar', title: 'Costo de personal en vivo', desc: 'Mira horas y costo de personal por día junto a tus ventas, para que la plantilla siempre sea la correcta.' },
-      { icon: 'file', title: 'Hojas de horas y nómina', desc: 'Horas, tiempo extra y descansos se calculan automáticamente. Exporta a Excel o a tu proveedor de nómina.' },
-    ],
-    how: [
-      { tag: 'Configuración', title: 'Agrega a tu equipo', desc: 'Registra a cada empleado una sola vez: puesto, sueldo por hora, horas de contrato y disponibilidad. Si ya tienes una hoja de cálculo, la importamos.', art: 'team' },
-      { tag: 'Encargado', title: 'Arma la semana', desc: 'Arrastra turnos al calendario o copia una semana anterior. El personal recibe el aviso en su celular de inmediato.', art: 'schedule' },
-      { tag: 'Personal', title: 'El personal marca entrada en tu local', desc: 'En la tableta de la entrada, cada empleado toca su nombre y escribe su PIN. Las llegadas tarde y las salidas sin marcar quedan señaladas.', art: 'clock' },
-      { tag: 'Nómina', title: 'Hojas de horas, listas', desc: 'Al cierre del periodo, las horas ya están calculadas. Revisa, aprueba y exporta a nómina con un clic.', art: 'export' },
-    ],
-    onsite: {
-      title: 'Corre en un pequeño servidor en tu oficina',
-      desc: 'El software corre en un servidor compacto o una PC dentro de tu negocio. La tableta para marcar entrada se monta en la entrada y se conecta a él. Los encargados lo usan desde cualquier computadora del local y el personal ve su horario de forma segura desde su celular.',
-      items: [
-        'Servidor y tableta de entrada instalados por nosotros',
-        'Empleados y reglas (descansos, tiempo extra) configurados contigo',
-        'Capacitación para encargados y guía rápida impresa',
-        'Conexión opcional con nuestro POS para comparar ventas contra personal',
+    {
+      slug: 'employee-management',
+      name: x('Gestión de empleados', 'Employee management'),
+      short: x('Horarios, reloj checador y horas', 'Schedules, time clock and hours'),
+      icon: 'users',
+      color: 'indigo',
+      headline: x('Horarios, reloj checador y <span class="grad">nómina</span> sin hojas de cálculo', 'Schedules, time clock and <span class="grad">payroll</span> without spreadsheets'),
+      lead: x('Arma la semana en minutos, tu personal marca entrada en una tableta y las horas salen listas para la nómina.', 'Build the week in minutes, staff clock in on a tablet, and hours come out payroll-ready.'),
+      metaDescription: x('Horarios por turnos, reloj checador en tu local, permisos y hojas de horas listas para nómina. Instalado en tu negocio.', 'Shift schedules, on-site time clock, time off and payroll-ready timesheets. Installed at your business.'),
+      kpis: [
+        { icon: 'calendar', text: x('Horario en minutos', 'Schedule in minutes') },
+        { icon: 'clock', text: x('Entrada con PIN', 'PIN clock-in') },
+        { icon: 'file', text: x('Exporta a nómina', 'Payroll export') },
       ],
-      hardware: [
-        { icon: 'server', name: 'Mini servidor' },
-        { icon: 'tablet', name: 'Tableta de entrada' },
-        { icon: 'smartphone', name: 'Celulares del personal' },
+      features: [
+        { icon: 'calendar', title: x('Horario semanal', 'Weekly schedule'), desc: x('Arrastra, copia la semana, publica.', 'Drag, copy last week, publish.') },
+        { icon: 'clock', title: x('Reloj checador', 'Time clock'), desc: x('Tableta en la entrada, con PIN.', 'Tablet at the door, with a PIN.') },
+        { icon: 'smile', title: x('Permisos con un toque', 'One-tap time off'), desc: x('Se piden desde el celular.', 'Requested from the phone.') },
+        { icon: 'file', title: x('Hojas de horas', 'Timesheets'), desc: x('Extras y descansos calculados solos.', 'Overtime and breaks calculated for you.') },
       ],
+      how: [
+        { tag: x('Encargado', 'Manager'), title: x('Arma la semana', 'Build the week'), desc: x('El personal la ve en su celular.', 'Staff see it on their phone.'), art: 'schedule' },
+        { tag: x('Personal', 'Staff'), title: x('Marca entrada en tu local', 'Clock in on site'), desc: x('Las llegadas tarde quedan señaladas.', 'Late arrivals get flagged.'), art: 'clock' },
+        { tag: x('Nómina', 'Payroll'), title: x('Exporta las horas', 'Export the hours'), desc: x('Un archivo que tu contador abre directo.', 'A file your accountant opens directly.'), art: 'export' },
+      ],
+      onsite: {
+        title: x('Corre en un servidor en tu oficina', 'Runs on a server in your office'),
+        items: [x('Servidor y tableta de entrada instalados', 'Server and clock-in tablet installed'), x('Empleados y reglas cargados contigo', 'Staff and rules set up with you'), x('Sin cuotas por empleado', 'No per-employee fees')],
+        hardware: [
+          { icon: 'server', name: x('Mini servidor', 'Mini server') },
+          { icon: 'tablet', name: x('Tableta de entrada', 'Clock-in tablet') },
+          { icon: 'smartphone', name: x('Celulares del personal', 'Staff phones') },
+        ],
+      },
+      demo: {
+        href: 'demos/employees.html',
+        title: x('Abre el panel de personal', 'Open the staff dashboard'),
+        desc: x('Asigna turnos, marca una entrada, aprueba un permiso y exporta las horas.', 'Assign shifts, clock someone in, approve time off and export hours.'),
+        bullets: [x('Horario semanal interactivo', 'Interactive weekly schedule'), x('Reloj checador que funciona', 'Working time clock'), x('Hojas de horas listas para nómina', 'Payroll-ready timesheets')],
+      },
     },
-    demo: {
-      href: 'demos/employees.html',
-      title: 'Abre el panel de personal de muestra',
-      desc: 'Asigna turnos en el horario semanal, marca la entrada y salida de un empleado, aprueba un permiso y mira cómo se actualiza la hoja de horas.',
-      bullets: ['Horario semanal interactivo', 'Reloj checador que funciona', 'Aprobación de permisos y resumen de nómina'],
-    },
-    faq: [
-      { q: '¿Los empleados necesitan instalar una app?', a: 'No. Abren un enlace seguro en su celular para ver turnos y pedir permisos. La entrada se marca en la tableta del trabajo.' },
-      { q: '¿Cómo evitan que alguien marque por un compañero?', a: 'Cada entrada necesita un PIN personal y puede tomar una foto. Los encargados ven de inmediato las entradas señaladas.' },
-      { q: '¿Funciona con mi proveedor de nómina?', a: 'Las hojas de horas se exportan a Excel y CSV, formatos que aceptan la mayoría de proveedores de nómina y contadores. Integraciones directas, bajo pedido.' },
-      { q: '¿Puedo manejar varias sucursales?', a: 'Sí. Cada sucursal tiene su propio horario y su tableta de entrada, y tú ves todo desde una sola pantalla.' },
-    ],
-  },
 
-  {
-    slug: 'pos-system',
-    name: 'Sistema POS',
-    short: 'Punto de venta, suministrado e instalado por nosotros',
-    icon: 'pos',
-    color: 'violet',
-    headline: 'Un punto de venta rápido, <span class="grad">instalado y configurado</span> por nosotros',
-    lead: 'Vende más rápido con un POS moderno de pantalla táctil. Suministramos la terminal, la impresora de recibos, el cajón de dinero, el lector de códigos de barras y la terminal de tarjeta; instalamos todo en tu local, cargamos tus productos y capacitamos a tu equipo.',
-    metaDescription: 'Sistema POS de pantalla táctil suministrado, instalado y configurado en tu local: terminal, impresora de recibos, cajón de dinero, lector y terminal de tarjeta, con capacitación del personal.',
-    kpis: [
-      { icon: 'zap', text: 'Cobra una venta en segundos' },
-      { icon: 'wifi-off', text: 'Sigue funcionando sin internet' },
-      { icon: 'wrench', text: 'Equipo instalado por nosotros' },
-    ],
-    features: [
-      { icon: 'pos', title: 'Ventas en pantalla táctil', desc: 'Botones grandes, categorías, búsqueda rápida y modificadores. El personal nuevo lo aprende en diez minutos.' },
-      { icon: 'credit-card', title: 'Todas las formas de pago', desc: 'Tarjeta, efectivo, pagos divididos, propinas y vales. La terminal de tarjeta va conectada: nunca se vuelve a teclear el monto.' },
-      { icon: 'printer', title: 'Recibos y cajón de dinero', desc: 'Los recibos se imprimen al instante o se envían por correo. El cajón se abre solo en las ventas en efectivo.' },
-      { icon: 'scan', title: 'Lectura de códigos de barras', desc: 'Escanea productos en la caja y durante los conteos de inventario. Funciona con nuestro software de inventario desde el primer día.' },
-      { icon: 'bar-chart', title: 'Cierre del día con un toque', desc: 'Ventas por forma de pago, por producto y por empleado. Cierra la caja en minutos, no en una hora.' },
-      { icon: 'wifi-off', title: 'Funciona sin internet', desc: 'El POS corre en tu local. Si se cae el internet, sigues vendiendo y todo se sincroniza cuando regresa.' },
-    ],
-    how: [
-      { tag: 'Día de instalación', title: 'Instalamos el equipo', desc: 'Terminal, impresora, cajón, lector y terminal de tarjeta quedan montados, cableados y probados en tu mostrador por nosotros.', art: 'install' },
-      { tag: 'Configuración', title: 'Cargamos tus productos', desc: 'Importamos tu lista de productos con precios, categorías, impuestos y códigos de barras, para que el primer día ya puedas vender.', art: 'products' },
-      { tag: 'Cada día', title: 'Cobra las ventas', desc: 'Toca los productos o escanea códigos, aplica descuentos y cobra. El recibo se imprime y el cajón se abre.', art: 'sale' },
-      { tag: 'Reportes', title: 'Cierra el día', desc: 'El reporte de cierre muestra los totales por forma de pago y por producto. Si usas nuestro inventario, las existencias ya están actualizadas.', art: 'eod' },
-    ],
-    onsite: {
-      title: 'El día de instalación lo hacemos nosotros',
-      desc: 'Llegamos con el equipo, lo montamos en tu mostrador, conectamos la red, importamos tus productos, imprimimos recibos de prueba y capacitamos a tu equipo. Nos quedamos durante tu primera hora pico para que nadie se quede con dudas.',
-      items: [
-        'Terminal, impresora de recibos, cajón de dinero, lector y terminal de tarjeta suministrados e instalados',
-        'Pantalla para el cliente e impresora de cocina disponibles como opción',
-        'Productos, impuestos y diseño del recibo configurados',
-        'Capacitación del personal en tu local, más una guía rápida impresa',
+    {
+      slug: 'pos-system',
+      name: x('Sistema POS', 'POS system'),
+      short: x('Caja rápida, instalada por nosotros', 'A fast register, installed by us'),
+      icon: 'pos',
+      color: 'violet',
+      headline: x('Un punto de venta rápido, <span class="grad">instalado por nosotros</span>', 'A fast point of sale, <span class="grad">installed by us</span>'),
+      lead: x('Terminal, impresora, cajón, lector y terminal de tarjeta. Los llevamos, los instalamos y capacitamos a tu equipo.', 'Terminal, printer, cash drawer, scanner and card reader. We bring them, install them and train your team.'),
+      metaDescription: x('Sistema POS táctil suministrado, instalado y configurado en tu local, con capacitación del personal.', 'Touch-screen POS supplied, installed and configured on site, with staff training.'),
+      kpis: [
+        { icon: 'zap', text: x('Venta en segundos', 'A sale in seconds') },
+        { icon: 'wifi-off', text: x('Funciona sin internet', 'Works offline') },
+        { icon: 'wrench', text: x('Equipo incluido', 'Hardware included') },
       ],
-      hardware: [
-        { icon: 'pos', name: 'Terminal táctil' },
-        { icon: 'printer', name: 'Impresora de recibos' },
-        { icon: 'drawer', name: 'Cajón de dinero' },
-        { icon: 'scan', name: 'Lector de códigos' },
-        { icon: 'credit-card', name: 'Terminal de tarjeta' },
-        { icon: 'monitor', name: 'Pantalla para el cliente' },
+      features: [
+        { icon: 'pos', title: x('Pantalla táctil', 'Touch screen'), desc: x('Botones grandes, se aprende en 10 minutos.', 'Big buttons, learned in 10 minutes.') },
+        { icon: 'credit-card', title: x('Todos los pagos', 'Every payment'), desc: x('Tarjeta, efectivo, dividido, propinas.', 'Card, cash, split, tips.') },
+        { icon: 'bar-chart', title: x('Cierre con un toque', 'One-tap close'), desc: x('Ventas por pago, producto y empleado.', 'Sales by payment, product and staff.') },
+        { icon: 'wifi-off', title: x('Sin internet, sigue', 'Keeps going offline'), desc: x('Corre en tu local y sincroniza después.', 'Runs on site and syncs later.') },
       ],
+      how: [
+        { tag: x('Instalación', 'Install day'), title: x('Montamos el equipo', 'We set up the hardware'), desc: x('Cableado, probado, listo.', 'Wired, tested, ready.'), art: 'install' },
+        { tag: x('Cada día', 'Every day'), title: x('Cobra las ventas', 'Ring up sales'), desc: x('Toca, escanea, cobra, recibo.', 'Tap, scan, charge, receipt.'), art: 'sale' },
+        { tag: x('Cierre', 'Close'), title: x('Cierra el día', 'Close the day'), desc: x('Totales listos y stock actualizado.', 'Totals ready and stock updated.'), art: 'eod' },
+      ],
+      onsite: {
+        title: x('El día de instalación lo hacemos nosotros', 'We handle install day'),
+        items: [x('Terminal, impresora, cajón, lector y tarjeta', 'Terminal, printer, drawer, scanner and card reader'), x('Productos e impuestos cargados', 'Products and taxes loaded'), x('Nos quedamos en tu primera hora pico', 'We stay for your first rush')],
+        hardware: [
+          { icon: 'pos', name: x('Terminal táctil', 'Touch terminal') },
+          { icon: 'printer', name: x('Impresora de recibos', 'Receipt printer') },
+          { icon: 'drawer', name: x('Cajón de dinero', 'Cash drawer') },
+          { icon: 'scan', name: x('Lector de códigos', 'Barcode scanner') },
+          { icon: 'credit-card', name: x('Terminal de tarjeta', 'Card reader') },
+        ],
+      },
+      demo: {
+        href: 'demos/pos.html',
+        title: x('Usa la caja de muestra', 'Use the sample register'),
+        desc: x('Cobra, aplica un descuento, recibe el pago e imprime el recibo.', 'Ring up items, apply a discount, take payment and print the receipt.'),
+        bullets: [x('Productos con categorías y búsqueda', 'Products with categories and search'), x('Efectivo, tarjeta y pagos divididos', 'Cash, card and split payments'), x('Recibo y cierre del día', 'Receipt and end-of-day report')],
+      },
     },
-    demo: {
-      href: 'demos/pos.html',
-      title: 'Usa la caja POS de muestra',
-      desc: 'Cobra productos, aplica un descuento, recibe un pago en efectivo o con tarjeta e imprime el recibo. Luego revisa el reporte de cierre del día.',
-      bullets: ['Cuadrícula de productos con categorías y búsqueda', 'Pagos en efectivo, tarjeta y divididos', 'Impresión de recibos y reporte de cierre'],
-    },
-    faq: [
-      { q: '¿Puedo usar el equipo que ya tengo?', a: 'Muchas veces sí. Revisamos tu impresora, cajón o lector actual y reutilizamos lo que sea compatible.' },
-      { q: '¿Qué terminales de tarjeta soportan?', a: 'Instalamos terminales de los principales proveedores de pago de tu zona y las conectamos al POS. En la primera visita confirmamos la mejor opción para tu negocio.' },
-      { q: '¿Cobran comisión sobre las ventas?', a: 'No. No nos quedamos con un porcentaje de tus ventas. Las comisiones por tarjeta las fija tu proveedor de pagos.' },
-      { q: '¿Qué pasa si se va el internet?', a: 'Nada se detiene. El POS corre en tu propio equipo. Los pagos con tarjeta dependen de tu terminal; todo lo demás sigue funcionando.' },
-    ],
-  },
 
-  {
-    slug: 'ai-receptionist',
-    name: 'Recepcionista con IA',
-    short: 'Contesta cada llamada y agenda citas, las 24 horas',
-    icon: 'headset',
-    color: 'cyan',
-    headline: 'No pierdas ni una llamada con una <span class="grad">recepcionista con IA</span> que contesta 24/7',
-    lead: 'Una recepcionista con inteligencia artificial, de voz natural, contesta cada llamada, responde las preguntas frecuentes, agenda citas en tu calendario, toma recados y te transfiere las llamadas urgentes.',
-    metaDescription: 'Una recepcionista con inteligencia artificial que contesta el teléfono de tu negocio 24/7, agenda citas, responde preguntas y te envía resúmenes de cada llamada. Con tu número actual.',
-    kpis: [
-      { icon: 'clock', text: 'Contesta antes del segundo timbre' },
-      { icon: 'calendar', text: 'Agenda en tu calendario' },
-      { icon: 'languages', text: 'Habla varios idiomas' },
-    ],
-    features: [
-      { icon: 'phone', title: 'Todas las llamadas contestadas', desc: 'Ocupado, cerrado o con un cliente: la IA contesta en segundos, así que nadie cae al buzón de voz.' },
-      { icon: 'calendar', title: 'Agenda de citas', desc: 'Revisa tu disponibilidad real, agenda el espacio y le envía la confirmación al cliente.' },
-      { icon: 'info', title: 'Conoce tu negocio', desc: 'Horarios, precios, servicios, cómo llegar, estacionamiento: responde con la información que tú apruebas.' },
-      { icon: 'message', title: 'Recados y resúmenes', desc: 'Si no puede ayudar, toma un recado y te envía un resumen por SMS o correo justo después de la llamada.' },
-      { icon: 'users', title: 'Transfiere a una persona', desc: 'Las llamadas urgentes o complejas se pasan a tu teléfono, junto con lo que el cliente ya explicó.' },
-      { icon: 'languages', title: 'Varios idiomas', desc: 'Contesta en el idioma del cliente, en español o inglés, y cambia automáticamente a mitad de la llamada.' },
-    ],
-    how: [
-      { tag: 'Cliente', title: 'Entra una llamada', desc: 'Tu número actual se desvía a la recepcionista con IA cuando estás ocupado, fuera de horario o siempre. Tú decides.', art: 'call' },
-      { tag: 'IA', title: 'La IA contesta con naturalidad', desc: 'Saluda, entiende lo que necesita la persona y responde con la información de tu negocio que aprobaste.', art: 'answer' },
-      { tag: 'IA', title: 'Agenda o toma el recado', desc: 'Las citas van directo a tu calendario. Todo lo demás se convierte en un recado con un resumen corto.', art: 'calendar' },
-      { tag: 'Tú', title: 'Recibes el resumen', desc: 'Cada llamada queda registrada con su transcripción en tu panel, y recibes un resumen por SMS o correo.', art: 'summary' },
-    ],
-    onsite: {
-      title: 'Conectada a tu número, con el panel en tu negocio',
-      desc: 'Configuramos el desvío de llamadas desde tu número actual, cargamos la información y las reglas de agenda de tu negocio, e instalamos el panel de llamadas en tu sistema local, para que el registro y las transcripciones se queden contigo.',
-      items: [
-        'Funciona con tu número de teléfono actual',
-        'Información del negocio, servicios y reglas de agenda configurados por nosotros',
-        'Registro de llamadas y transcripciones en tu panel local',
-        'Se conecta con nuestro software de citas, POS y personal',
+    {
+      slug: 'ai-receptionist',
+      name: x('Recepcionista con IA', 'AI receptionist'),
+      short: x('Contesta cada llamada, 24/7', 'Answers every call, 24/7'),
+      icon: 'headset',
+      color: 'cyan',
+      headline: x('Ni una llamada perdida con una <span class="grad">recepcionista con IA</span>', 'Never miss a call with an <span class="grad">AI receptionist</span>'),
+      lead: x('Contesta con voz natural, responde preguntas, agenda citas y te envía un resumen. Con tu número actual.', 'Answers in a natural voice, handles questions, books appointments and texts you a summary. On your current number.'),
+      metaDescription: x('Recepcionista con inteligencia artificial que contesta tu teléfono 24/7, agenda citas y te envía resúmenes. Con tu número actual.', 'An AI receptionist that answers your phone 24/7, books appointments and sends you summaries. On your current number.'),
+      kpis: [
+        { icon: 'clock', text: x('Contesta en 2 segundos', 'Answers in 2 seconds') },
+        { icon: 'calendar', text: x('Agenda en tu calendario', 'Books into your calendar') },
+        { icon: 'languages', text: x('Español e inglés', 'Spanish and English') },
       ],
-      hardware: [
-        { icon: 'phone', name: 'Tu línea telefónica' },
-        { icon: 'monitor', name: 'Panel de llamadas' },
-        { icon: 'smartphone', name: 'Resúmenes en tu celular' },
+      features: [
+        { icon: 'phone', title: x('Todas las llamadas', 'Every call answered'), desc: x('Ocupado, cerrado o con un cliente.', 'Busy, closed or with a customer.') },
+        { icon: 'calendar', title: x('Agenda citas', 'Books appointments'), desc: x('Revisa tu disponibilidad real.', 'Checks your real availability.') },
+        { icon: 'message', title: x('Recados y resúmenes', 'Messages and summaries'), desc: x('Por SMS justo después de colgar.', 'By text right after the call.') },
+        { icon: 'users', title: x('Transfiere a una persona', 'Transfers to a person'), desc: x('Lo urgente llega a tu celular.', 'Urgent calls reach your phone.') },
       ],
+      how: [
+        { tag: x('Cliente', 'Caller'), title: x('Entra una llamada', 'A call comes in'), desc: x('Tu número se desvía a la IA.', 'Your number forwards to the AI.'), art: 'call' },
+        { tag: x('IA', 'AI'), title: x('Contesta y agenda', 'Answers and books'), desc: x('La cita cae en tu calendario.', 'The appointment lands in your calendar.'), art: 'calendar' },
+        { tag: x('Tú', 'You'), title: x('Recibes el resumen', 'You get the summary'), desc: x('Con la transcripción en tu panel.', 'With the transcript in your dashboard.'), art: 'summary' },
+      ],
+      onsite: {
+        title: x('Con tu número, con el panel en tu negocio', 'Your number, your dashboard on site'),
+        items: [x('Funciona con tu número actual', 'Works with your current number'), x('Servicios y reglas de agenda configurados', 'Services and booking rules set up'), x('Transcripciones en tu panel local', 'Transcripts in your local dashboard')],
+        hardware: [
+          { icon: 'phone', name: x('Tu línea telefónica', 'Your phone line') },
+          { icon: 'monitor', name: x('Panel de llamadas', 'Call dashboard') },
+          { icon: 'smartphone', name: x('Resúmenes en tu celular', 'Summaries on your phone') },
+        ],
+      },
+      demo: {
+        href: 'demos/receptionist.html',
+        title: x('Escucha una llamada de muestra', 'Watch a sample call'),
+        desc: x('Simula una llamada, mira la transcripción y cómo la cita cae en el calendario.', 'Simulate a call, read the live transcript and watch the booking land in the calendar.'),
+        bullets: [x('Llamadas simuladas en vivo', 'Simulated live calls'), x('Citas en el calendario', 'Bookings in the calendar'), x('Pregúntale lo que quieras', 'Ask it anything')],
+      },
     },
-    demo: {
-      href: 'demos/receptionist.html',
-      title: 'Mira una llamada de muestra',
-      desc: 'Simula una llamada entrante, mira cómo contesta la IA, agenda una cita en el calendario y envía el resumen. Luego hazle tú mismo una pregunta.',
-      bullets: ['Llamadas simuladas con transcripción en vivo', 'La cita aparece en el calendario', 'Pregúntale lo que quieras a la recepcionista'],
-    },
-    faq: [
-      { q: '¿Suena como un robot?', a: 'No. Usa una voz natural, entiende interrupciones y respuestas cortas, y se mantiene amable con personas difíciles. En la muestra puedes ver cómo maneja una llamada.' },
-      { q: '¿Qué pasa si no sabe la respuesta?', a: 'Nunca inventa. Toma un recado, le dice al cliente cuándo esperar respuesta y te envía el resumen de inmediato.' },
-      { q: '¿Puedo conservar mi número de teléfono?', a: 'Sí. Usamos desvío de llamadas, así que tu número no cambia.' },
-      { q: '¿Puedo elegir cuándo contesta?', a: 'Sí: siempre, solo fuera de horario, o solo cuando tú no contestas después de unos timbres.' },
-    ],
-  },
 
-  {
-    slug: 'inventory-software',
-    name: 'Software de inventario',
-    short: 'Sabe qué hay en existencia y qué hay que pedir',
-    icon: 'boxes',
-    color: 'sky',
-    headline: 'Sabe exactamente qué tienes en existencia y <span class="grad">qué pedir</span>',
-    lead: 'Controla cada producto de tu tienda o bodega, recibe alertas antes de que se acabe, escanea las entregas en segundos y crea órdenes de compra con un clic.',
-    metaDescription: 'Software de inventario con existencias en tiempo real, alertas de stock bajo, lectura de códigos de barras y órdenes de compra con un clic. Corre en tu servidor local junto a tu POS.',
-    kpis: [
-      { icon: 'bell', text: 'Alertas de stock bajo' },
-      { icon: 'scan', text: 'Recibe entregas escaneando' },
-      { icon: 'link', text: 'Cada venta descuenta existencias' },
-    ],
-    features: [
-      { icon: 'boxes', title: 'Existencias en tiempo real', desc: 'Cada venta del POS o del sitio web descuenta existencias automáticamente. Se acabó adivinar.' },
-      { icon: 'bell', title: 'Alertas para reordenar', desc: 'Define un mínimo por producto y recibe la lista de lo que hay que pedir antes de que se agote.' },
-      { icon: 'scan', title: 'Recibe escaneando', desc: 'Escanea los códigos de barras cuando llega una entrega y las existencias suben al instante. Las diferencias quedan señaladas.' },
-      { icon: 'file', title: 'Órdenes de compra', desc: 'Crea una orden para un proveedor con un clic, envíala por correo y recíbela después contra esa orden.' },
-      { icon: 'trash', title: 'Mermas y ajustes', desc: 'Registra roturas, mermas y conteos para que tus números siempre sean reales.' },
-      { icon: 'store', title: 'Varias ubicaciones', desc: 'Tienda, bodega, camioneta o segunda sucursal: mira las existencias de todas y haz traspasos entre ellas.' },
-    ],
-    how: [
-      { tag: 'Configuración', title: 'Configura productos y mínimos', desc: 'Importa tu lista de productos y define un nivel mínimo y un proveedor preferido para cada uno.', art: 'products' },
-      { tag: 'Cada día', title: 'Las existencias se mueven solas', desc: 'Las ventas restan, las entregas suman y los conteos corrigen. Todo queda registrado con quién y cuándo.', art: 'stock' },
-      { tag: 'Pedidos', title: 'Recibe la alerta y pide', desc: 'La lista de reorden muestra lo que está bajo. Crea la orden de compra y envíala al proveedor desde la misma pantalla.', art: 'alert' },
-      { tag: 'Recepción', title: 'Recibe y cuenta', desc: 'Escanea la entrega al llegar. Haz conteos periódicos con el lector o con el celular y deja que el software encuentre las diferencias.', art: 'scan' },
-    ],
-    onsite: {
-      title: 'Corre junto a tu POS en tu propio equipo',
-      desc: 'El software de inventario se instala en el mismo servidor local que tu POS, así que las existencias se actualizan al instante con cada venta, incluso sin internet. Instalamos los lectores de códigos y la impresora de etiquetas que necesites.',
-      items: [
-        'Instalado en tu servidor local, funciona sin internet',
-        'Lectores de códigos de barras e impresora de etiquetas suministrados y configurados',
-        'Importación de productos y niveles mínimos configurados contigo',
-        'Se conecta con nuestro POS y con los pedidos en línea',
+    {
+      slug: 'inventory-software',
+      name: x('Software de inventario', 'Inventory software'),
+      short: x('Sabe qué hay y qué pedir', 'Know what you have and what to order'),
+      icon: 'boxes',
+      color: 'sky',
+      headline: x('Sabe qué tienes y <span class="grad">qué pedir</span>, sin contar a mano', 'Know what you have and <span class="grad">what to order</span>, without counting by hand'),
+      lead: x('Cada venta descuenta existencias. Recibes la alerta antes de que se acabe y pides con un clic.', 'Every sale updates stock. You get the alert before it runs out and reorder in one click.'),
+      metaDescription: x('Existencias en tiempo real, alertas de stock bajo, lectura de códigos y órdenes de compra con un clic. Corre junto a tu POS.', 'Real-time stock, low-stock alerts, barcode scanning and one-click purchase orders. Runs next to your POS.'),
+      kpis: [
+        { icon: 'bell', text: x('Alertas de stock bajo', 'Low-stock alerts') },
+        { icon: 'scan', text: x('Recibe escaneando', 'Receive by scanning') },
+        { icon: 'link', text: x('Conectado al POS', 'Connected to the POS') },
       ],
-      hardware: [
-        { icon: 'server', name: 'Servidor local' },
-        { icon: 'scan', name: 'Lector de códigos' },
-        { icon: 'printer', name: 'Impresora de etiquetas' },
-        { icon: 'smartphone', name: 'Conteo con el celular' },
+      features: [
+        { icon: 'boxes', title: x('Existencias en vivo', 'Live stock'), desc: x('Cada venta descuenta sola.', 'Every sale deducts itself.') },
+        { icon: 'bell', title: x('Alertas de reorden', 'Reorder alerts'), desc: x('Un mínimo por producto.', 'A minimum per product.') },
+        { icon: 'scan', title: x('Recibe escaneando', 'Receive by scanning'), desc: x('Las entregas suben en segundos.', 'Deliveries added in seconds.') },
+        { icon: 'file', title: x('Órdenes de compra', 'Purchase orders'), desc: x('Un clic, al correo del proveedor.', 'One click, emailed to the supplier.') },
       ],
+      how: [
+        { tag: x('Cada día', 'Every day'), title: x('Las existencias se mueven solas', 'Stock moves on its own'), desc: x('Ventas restan, entregas suman.', 'Sales subtract, deliveries add.'), art: 'stock' },
+        { tag: x('Alerta', 'Alert'), title: x('Te avisa qué pedir', 'It tells you what to order'), desc: x('Orden de compra con un clic.', 'Purchase order in one click.'), art: 'alert' },
+        { tag: x('Recepción', 'Receiving'), title: x('Escanea la entrega', 'Scan the delivery'), desc: x('Diferencias señaladas al momento.', 'Differences flagged instantly.'), art: 'scan' },
+      ],
+      onsite: {
+        title: x('Corre junto a tu POS, en tu equipo', 'Runs next to your POS, on your hardware'),
+        items: [x('Mismo servidor que el POS, funciona sin internet', 'Same server as the POS, works offline'), x('Lectores e impresora de etiquetas', 'Scanners and label printer'), x('Productos y mínimos importados', 'Products and minimums imported')],
+        hardware: [
+          { icon: 'server', name: x('Servidor local', 'Local server') },
+          { icon: 'scan', name: x('Lector de códigos', 'Barcode scanner') },
+          { icon: 'printer', name: x('Impresora de etiquetas', 'Label printer') },
+        ],
+      },
+      demo: {
+        href: 'demos/inventory.html',
+        title: x('Explora la bodega de muestra', 'Explore the sample stockroom'),
+        desc: x('Simula una hora pico, mira aparecer las alertas y crea la orden de compra.', 'Simulate a rush, watch the alerts appear and create the purchase order.'),
+        bullets: [x('Existencias en vivo con alertas', 'Live stock with alerts'), x('Lector de códigos simulado', 'Simulated barcode scanner'), x('Órdenes de compra con un clic', 'One-click purchase orders')],
+      },
     },
-    demo: {
-      href: 'demos/inventory.html',
-      title: 'Explora la bodega de muestra',
-      desc: 'Escanea una entrega, vende algunos productos, mira aparecer la alerta de stock bajo y crea una orden de compra para el proveedor.',
-      bullets: ['Tabla de existencias en vivo con alertas', 'Simulación de lectura de códigos', 'Órdenes de compra con un clic'],
-    },
-    faq: [
-      { q: '¿Cuánto tarda cargar todos mis productos?', a: 'Los importamos desde tu hoja de cálculo o tu POS actual. Para una tienda típica, los productos quedan cargados antes del día de instalación.' },
-      { q: '¿Puedo contar el inventario con el celular?', a: 'Sí. Los conteos se pueden hacer con el lector o con la cámara del celular.' },
-      { q: '¿Maneja ingredientes para restaurantes?', a: 'Sí. Las recetas enlazan cada platillo con sus ingredientes, así que vender un platillo descuenta los ingredientes correctos.' },
-      { q: '¿Funciona con mi POS actual?', a: 'Funciona mejor con nuestro POS. Para otros sistemas podemos importar las ventas exportadas o construir una conexión.' },
-    ],
-  },
 
-  {
-    slug: 'custom-software',
-    name: 'Software a la medida',
-    short: 'Software exclusivo, construido alrededor de tu proceso',
-    icon: 'sparkles',
-    color: 'fuchsia',
-    headline: 'Software construido <span class="grad">exclusivamente</span> para cómo trabaja tu negocio',
-    lead: 'Cuando las herramientas genéricas no encajan, diseñamos y construimos software alrededor de tu proceso exacto, desde sistemas de citas y portales de clientes hasta herramientas internas, y lo instalamos en tu local.',
-    metaDescription: 'Software exclusivo diseñado alrededor del proceso de tu negocio: sistemas de citas, portales, herramientas internas e integraciones, instalado en tu local y de tu propiedad.',
-    kpis: [
-      { icon: 'sliders', text: 'Construido alrededor de tu proceso' },
-      { icon: 'lock', text: 'Es tuyo, sin cuotas por usuario' },
-      { icon: 'server', text: 'Instalado en tu local' },
-    ],
-    features: [
-      { icon: 'compass', title: 'Empieza por tu proceso', desc: 'Nos sentamos contigo y con tu equipo, entendemos cómo se hace el trabajo de verdad y diseñamos alrededor de eso.' },
-      { icon: 'eye', title: 'Un prototipo que puedes probar', desc: 'Antes de construir, pruebas un prototipo navegable y cambias todo lo que no te convenza.' },
-      { icon: 'link', title: 'Se conecta con lo que ya usas', desc: 'Contabilidad, proveedores de pago, proveedores, nuestros propios productos: integramos en lugar de duplicar.' },
-      { icon: 'lock', title: 'Tuyo, para siempre', desc: 'Sin licencias por usuario y sin ataduras. El software y los datos te pertenecen.' },
-      { icon: 'server', title: 'Instalado en tu local', desc: 'Corre en tu equipo, funciona sin internet donde importa y tus datos se quedan en tu edificio.' },
-      { icon: 'refresh', title: 'Mejora con el tiempo', desc: 'Una vez en marcha, seguimos agregando lo que necesites. Los cambios pequeños son rápidos porque lo construimos nosotros.' },
-    ],
-    examples: [
-      'Sistemas de citas y reservaciones', 'Portales de clientes y programas de lealtad', 'Cotizaciones, facturación y seguimiento de trabajos', 'Órdenes de trabajo y servicio en campo',
-      'Seguimiento de entregas y flotillas', 'Gestión de membresías', 'Paneles de reportes', 'Conexiones entre herramientas que ya usas',
-    ],
-    how: [
-      { tag: 'Semana 1', title: 'Taller de descubrimiento', desc: 'Media jornada contigo y con tu equipo para entender el proceso, los dolores de cabeza y el objetivo.', art: 'workshop' },
-      { tag: 'Semanas 2 a 3', title: 'Prototipo navegable', desc: 'Recibes un prototipo de las pantallas reales para probarlo. Lo ajustamos hasta que coincida con tu forma de trabajar.', art: 'prototype' },
-      { tag: 'Construcción', title: 'Construido por etapas', desc: 'Construimos y te mostramos avances cada semana, para que nada sea sorpresa al final.', art: 'build' },
-      { tag: 'Lanzamiento', title: 'Instalar, capacitar, mejorar', desc: 'Lo instalamos en tu local, capacitamos a tu equipo y lo seguimos mejorando contigo después del lanzamiento.', art: 'install' },
-    ],
-    onsite: {
-      title: 'Tu software, en tus instalaciones',
-      desc: 'El software a la medida se instala en un servidor dentro de tu negocio, con acceso remoto seguro cuando lo necesites. Los respaldos son automáticos y las actualizaciones las hacemos nosotros.',
-      items: [
-        'Servidor local dimensionado para tus necesidades',
-        'Respaldos locales automáticos, más una copia externa opcional',
-        'Acceso seguro desde celulares y laptops fuera del edificio',
-        'Actualizaciones y soporte a cargo de nosotros',
+    {
+      slug: 'custom-software',
+      name: x('Software a la medida', 'Custom software'),
+      short: x('Exclusivo, alrededor de tu proceso', 'Built exclusively around your process'),
+      icon: 'sparkles',
+      color: 'fuchsia',
+      headline: x('Software construido <span class="grad">solo para ti</span>', 'Software built <span class="grad">just for you</span>'),
+      lead: x('Cuando nada genérico encaja, lo diseñamos alrededor de tu proceso y lo instalamos en tu local.', 'When nothing off the shelf fits, we design it around your process and install it on site.'),
+      metaDescription: x('Software exclusivo diseñado alrededor del proceso de tu negocio, instalado en tu local y de tu propiedad.', 'Exclusive software designed around your business process, installed on site and owned by you.'),
+      kpis: [
+        { icon: 'sliders', text: x('Alrededor de tu proceso', 'Around your process') },
+        { icon: 'lock', text: x('Tuyo, sin cuotas por usuario', 'Yours, no per-user fees') },
+        { icon: 'server', text: x('Instalado en tu local', 'Installed on site') },
       ],
-      hardware: [
-        { icon: 'server', name: 'Servidor local' },
-        { icon: 'monitor', name: 'Cualquier computadora' },
-        { icon: 'smartphone', name: 'Celulares y tabletas' },
+      features: [
+        { icon: 'compass', title: x('Empieza por tu proceso', 'Starts with your process'), desc: x('Vemos cómo trabajas de verdad.', 'We look at how you really work.') },
+        { icon: 'eye', title: x('Prototipo primero', 'Prototype first'), desc: x('Lo pruebas antes de construirlo.', 'You try it before we build it.') },
+        { icon: 'link', title: x('Se conecta con lo tuyo', 'Connects to your tools'), desc: x('Contabilidad, pagos, proveedores.', 'Accounting, payments, suppliers.') },
+        { icon: 'lock', title: x('Tuyo para siempre', 'Yours forever'), desc: x('Código, datos y equipo.', 'Code, data and hardware.') },
       ],
+      examples: [
+        x('Citas y reservaciones', 'Appointments and bookings'), x('Portales de clientes', 'Customer portals'), x('Cotizaciones y facturas', 'Quotes and invoices'), x('Órdenes de trabajo', 'Work orders'),
+        x('Seguimiento de entregas', 'Delivery tracking'), x('Membresías', 'Memberships'), x('Paneles de reportes', 'Reporting dashboards'), x('Integraciones', 'Integrations'),
+      ],
+      how: [
+        { tag: x('Semana 1', 'Week 1'), title: x('Taller', 'Workshop'), desc: x('Media jornada con tu equipo.', 'Half a day with your team.'), art: 'workshop' },
+        { tag: x('Semanas 2 a 3', 'Weeks 2 to 3'), title: x('Prototipo navegable', 'Clickable prototype'), desc: x('Lo ajustamos hasta que encaje.', 'We adjust it until it fits.'), art: 'prototype' },
+        { tag: x('Después', 'Then'), title: x('Construir e instalar', 'Build and install'), desc: x('Por etapas, con avances semanales.', 'In stages, with weekly progress.'), art: 'build' },
+      ],
+      onsite: {
+        title: x('Tu software, en tus instalaciones', 'Your software, on your premises'),
+        items: [x('Servidor local a tu medida', 'Local server sized for you'), x('Respaldos automáticos', 'Automatic backups'), x('Acceso seguro desde fuera', 'Secure access from outside')],
+        hardware: [
+          { icon: 'server', name: x('Servidor local', 'Local server') },
+          { icon: 'monitor', name: x('Cualquier computadora', 'Any computer') },
+          { icon: 'smartphone', name: x('Celulares y tabletas', 'Phones and tablets') },
+        ],
+      },
+      demo: {
+        href: 'demos/custom.html',
+        title: x('Arma tu propio sistema', 'Build your own system'),
+        desc: x('Elige tu giro y tus módulos y mira cómo se arma tu panel.', 'Pick your business type and modules and watch your dashboard take shape.'),
+        bullets: [x('Módulos para tu negocio', 'Modules for your business'), x('Vista previa en vivo', 'Live preview'), x('Envíalo como solicitud de cotización', 'Send it as a quote request')],
+      },
     },
-    demo: {
-      href: 'demos/custom.html',
-      title: 'Arma tu propio sistema',
-      desc: 'Elige tu tipo de negocio y los módulos que necesitas, y mira cómo se arma solo un panel a tu medida. Envíanos el resultado para empezar la conversación.',
-      bullets: ['Elige módulos para tu negocio', 'Vista previa en vivo de tu sistema', 'Envía la configuración como solicitud de cotización'],
-    },
-    faq: [
-      { q: '¿Cuánto tiempo tarda?', a: 'Las herramientas pequeñas toman unas semanas. Los sistemas grandes se entregan por etapas, para que empieces a usar la primera parte pronto.' },
-      { q: '¿Cuánto cuesta?', a: 'Depende del alcance. Después del taller de descubrimiento recibes una cotización fija por etapa, sin cuotas mensuales ocultas por usuario.' },
-      { q: '¿De quién es el software?', a: 'Tuyo. El código, los datos y el equipo son tuyos.' },
-      { q: '¿Pueden reemplazar un sistema que ya tenemos?', a: 'Sí. Empezamos por entender lo que funciona hoy, migramos tus datos y hacemos el cambio sin detener tu negocio.' },
-    ],
-  },
-];
+  ];
+};
 
-export const industries = [
-  { icon: 'utensils', name: 'Restaurantes' },
-  { icon: 'coffee', name: 'Cafeterías y panaderías' },
-  { icon: 'store', name: 'Tiendas' },
-  { icon: 'scissors', name: 'Salones y barberías' },
-  { icon: 'heart-pulse', name: 'Clínicas y consultorios' },
-  { icon: 'car', name: 'Talleres mecánicos' },
-  { icon: 'dumbbell', name: 'Gimnasios y estudios' },
-  { icon: 'bed', name: 'Hoteles y hospedajes' },
-  { icon: 'pizza', name: 'Comida para llevar' },
-  { icon: 'package', name: 'Mayoristas' },
-  { icon: 'home', name: 'Servicios a domicilio' },
-  { icon: 'graduation', name: 'Escuelas y capacitación' },
-];
+export const getIndustries = (lang = 'es') => {
+  const x = (es, en) => (lang === 'en' ? en : es);
+  return [
+    { icon: 'utensils', name: x('Restaurantes', 'Restaurants') },
+    { icon: 'coffee', name: x('Cafeterías y panaderías', 'Cafés and bakeries') },
+    { icon: 'store', name: x('Tiendas', 'Retail shops') },
+    { icon: 'scissors', name: x('Salones y barberías', 'Salons and barbershops') },
+    { icon: 'heart-pulse', name: x('Clínicas y consultorios', 'Clinics and practices') },
+    { icon: 'car', name: x('Talleres mecánicos', 'Auto shops') },
+    { icon: 'dumbbell', name: x('Gimnasios y estudios', 'Gyms and studios') },
+    { icon: 'bed', name: x('Hoteles y hospedajes', 'Hotels and lodging') },
+    { icon: 'pizza', name: x('Comida para llevar', 'Takeout') },
+    { icon: 'package', name: x('Mayoristas', 'Wholesalers') },
+    { icon: 'home', name: x('Servicios a domicilio', 'Home services') },
+    { icon: 'graduation', name: x('Escuelas y capacitación', 'Schools and training') },
+  ];
+};
 
-export const hardware = [
-  { icon: 'pos', name: 'Terminal POS táctil', desc: 'Rápida, brillante y hecha para mostradores con mucho movimiento.' },
-  { icon: 'printer', name: 'Impresoras de recibos y cocina', desc: 'Impresoras térmicas para recibos y comandas de cocina.' },
-  { icon: 'drawer', name: 'Cajón de dinero', desc: 'Se abre solo en las ventas en efectivo.' },
-  { icon: 'scan', name: 'Lector de códigos de barras', desc: 'Para la caja, las entregas y los conteos de inventario.' },
-  { icon: 'credit-card', name: 'Terminal de tarjeta', desc: 'Conectada al POS, sin volver a teclear montos.' },
-  { icon: 'tablet', name: 'Tabletas', desc: 'Para pedidos, entradas del personal y pantallas de cocina.' },
-  { icon: 'monitor', name: 'Pantallas para clientes y cocina', desc: 'Muestran los pedidos donde hacen falta.' },
-  { icon: 'server', name: 'Servidor local', desc: 'Silencioso, compacto e instalado en tu oficina.' },
-];
+export const getHardware = (lang = 'es') => {
+  const x = (es, en) => (lang === 'en' ? en : es);
+  return [
+    { icon: 'pos', name: x('Terminal POS táctil', 'Touch POS terminal'), desc: x('Rápida y hecha para mostradores con movimiento.', 'Fast and built for busy counters.') },
+    { icon: 'printer', name: x('Impresoras de recibos y cocina', 'Receipt and kitchen printers'), desc: x('Térmicas, para recibos y comandas.', 'Thermal, for receipts and kitchen tickets.') },
+    { icon: 'drawer', name: x('Cajón de dinero', 'Cash drawer'), desc: x('Se abre solo en ventas en efectivo.', 'Opens by itself on cash sales.') },
+    { icon: 'scan', name: x('Lector de códigos', 'Barcode scanner'), desc: x('Para la caja, entregas y conteos.', 'For the register, deliveries and counts.') },
+    { icon: 'credit-card', name: x('Terminal de tarjeta', 'Card reader'), desc: x('Conectada al POS, sin teclear montos.', 'Connected to the POS, no retyping amounts.') },
+    { icon: 'tablet', name: x('Tabletas', 'Tablets'), desc: x('Pedidos, entradas y pantallas de cocina.', 'Orders, clock-ins and kitchen screens.') },
+    { icon: 'monitor', name: x('Pantallas', 'Displays'), desc: x('Para clientes y para la cocina.', 'For customers and for the kitchen.') },
+    { icon: 'server', name: x('Servidor local', 'Local server'), desc: x('Silencioso, compacto, en tu oficina.', 'Quiet, compact, in your office.') },
+  ];
+};
+
+export const products = getProducts('es');
+export const industries = getIndustries('es');
+export const hardware = getHardware('es');

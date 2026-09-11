@@ -1,2 +1,2 @@
-import { flowArt } from '../data/mockups.mjs';
-export default () => flowArt('training');
+import { mockups } from '../data/mockups.mjs';
+export default (ctx) => mockups(ctx.lang).flowArt('training');
